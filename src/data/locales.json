@@ -1,0 +1,332 @@
+{
+  "id": {
+    "hero": {
+      "badge": "Baru: Bootcamp Data Science 2024",
+      "titleHighlight1": "Tingkatkan ",
+      "titleHighlight2": "Karier",
+      "titleHighlight3": " Anda dengan Belajar Terstruktur.",
+      "subtitle": "Akses ribuan kursus berkualitas tinggi dari instruktur profesional. Investasi terbaik adalah investasi pada diri Anda sendiri.",
+      "searchPlaceholder": "Cari kursus idaman Anda...",
+      "ctaButton": "Mulai Belajar",
+      "trustedBy": "Dipercaya Oleh:",
+      "studentsCount": "3.5k+ Pelajar",
+      "joinedText": "Baru saja bergabung"
+    },
+    "category": {
+      "title": "Kategori Teratas",
+      "subtitle": "Temukan topik populer dan mulai belajar dari para ahli di bidangnya."
+    },
+    "course": {
+      "titleStart": "Apa yang akan dipelajari ",
+      "titleHighlight": "selanjutnya?",
+      "subtitle": "Pilihan teratas kami yang dikurasi khusus untuk mempercepat pertumbuhan karier Anda.",
+      "viewAll": "Lihat Semua Kursus",
+      "emptyStateTitle": "Belum Ada Kursus",
+      "emptyStateSubtitle": "Maaf, saat ini belum ada kursus yang tersedia untuk kategori ini. Kami sedang menyiapkannya untuk Anda!",
+      "checkOtherCategory": "Cek Kategori Lain"
+    },
+    "instructor": {
+      "badge": "Menjadi Pengajar",
+      "titleLine1": "Bagikan Ilmu Anda & ",
+      "titleLine2": "Inspirasi Jutaan Pelajar.",
+      "subtitle": "EduPro memberikan Anda alat, dukungan, dan komunitas untuk mengubah keahlian Anda menjadi kursus online yang berdampak global.",
+      "feature1Title": "Video Analytics",
+      "feature1Desc": "Pantau performa kursus Anda dengan data yang mendalam.",
+      "feature2Title": "Komunitas Global",
+      "feature2Desc": "Terhubung dengan pelajar dari 190+ negara di dunia.",
+      "feature3Title": "Brand Eksklusif",
+      "feature3Desc": "Bangun reputasi Anda sebagai instruktur top industri.",
+      "statsStudents": "Pelajar Puas",
+      "statsExperience": "Tahun Mengajar",
+      "ctaButton": "Mulai Mengajar Sekarang",
+      "ctaSubtext": "Bebas biaya pendaftaran. Mulai hari ini."
+    },
+    "testimonial": {
+      "title": "Apa Kata Mereka?",
+      "subtitle": "Ribuan pelajar telah berhasil meningkatkan karier mereka melalui kursus berkualitas di platform kami."
+    },
+    "modalLanguage": {
+      "title": "Pilih Bahasa"
+    },
+    "menu": {
+      "categories": "Kategori",
+      "courses": "Kursus",
+      "mentor": "Mentor",
+      "login": "Masuk",
+      "register": "Daftar",
+      "placeholderSearch": "Cari skill apa aja...",
+      "seeAllCategories": "Lihat Semua Kategori",
+      "menuLabel": "Menu",
+      "settingsLabel": "Pengaturan",
+      "languageLabel": "Bahasa",
+      "exploreCategories": "Jelajahi Kategori"
+    },
+    "coursesPage": {
+      "badge": "Kurasi Unggulan",
+      "title": "Jelajahi Koleksi",
+      "subtitle": "Temukan ribuan kursus pilihan yang dirancang untuk mempercepat karier Anda di dunia digital.",
+      "filters": {
+        "disciplines": "Disiplin Ilmu",
+        "experience": "Tingkat Pengalaman",
+        "format": "Format Kursus",
+        "seeMore": "Lihat Lebih Banyak Koleksi"
+      }
+    },
+    "courseDetail": {
+      "enrollNow": "Daftar Sekarang",
+      "scholarship": "Ajukan Beasiswa",
+      "philosophyTitle": "Filosofi Kursus",
+      "curriculumTitle": "Alur Kurikulum",
+      "viewSyllabus": "Lihat Silabus Lengkap",
+      "mentorWord": "Pesan dari Mentor",
+      "included": "Termasuk dalam akses Anda:",
+      "features": [
+        "Akses Seumur Hidup",
+        "Jaringan Kursus Privat",
+        "Sumber Daya Eksklusif",
+        "Sertifikat Digital"
+      ]
+    },
+    "mentorsPage": {
+      "badge": "Kurasi Mentor",
+      "title": "Belajar dari yang Terbaik",
+      "subtitle": "Kumpulan praktisi dan pemikir kelas dunia yang siap membimbing perjalanan intelektual Anda.",
+      "filters": {
+        "expertise": "Keahlian",
+        "role": "Peran",
+        "seeMore": "Lihat Lebih Banyak Mentor"
+      }
+    },
+    "categoriesPage": {
+      "badge": "Jelajahi Minat",
+      "title": "Kategori Keahlian",
+      "subtitle": "Temukan berbagai disiplin ilmu yang dikurasi khusus untuk membimbing pertumbuhan profesional Anda."
+    },
+    "loginPage": {
+      "title": "Selamat Datang Kembali",
+      "subtitle": "Silakan masukkan kredensial Anda untuk mengakses Executive Lounge.",
+      "emailLabel": "Email Korporat",
+      "passwordLabel": "Kata Sandi",
+      "forgotPassword": "Lupa Kata Sandi?",
+      "rememberMe": "Ingat perangkat ini selama 30 hari",
+      "submitButton": "Masuk ke Sanctuary",
+      "socialText": "Atau autentikasi dengan",
+      "footerText": "Butuh akses institusi? Ajukan Keanggotaan",
+      "heroTitle": "Tingkatkan Potensi Eksekutif Anda.",
+      "heroSubtitle": "Bergabunglah dengan komunitas elit pemimpin global dan pembelajar seumur hidup yang berdedikasi untuk menguasai seni kepemimpinan modern.",
+      "heroStats": "DIPERCAYA OLEH 5,000+ PEMIMPIN GLOBAL"
+    },
+    "registerPage": {
+      "title": "Bergabung dengan Elit",
+      "subtitle": "Mulai perjalanan Anda menuju penguasaan intelektual dan kepemimpinan hari ini.",
+      "nameLabel": "Nama Lengkap",
+      "emailLabel": "Email Korporat",
+      "passwordLabel": "Kata Sandi",
+      "confirmPasswordLabel": "Konfirmasi Kata Sandi",
+      "submitButton": "Daftar Sekarang",
+      "alreadyHaveAccount": "Sudah punya akun? Masuk",
+      "termsText": "Saya setuju dengan Syarat & Ketentuan serta Kebijakan Privasi.",
+      "heroTitle": "Investasikan pada Masa Depan Anda.",
+      "heroSubtitle": "Dapatkan akses eksklusif ke kurikulum yang dirancang untuk membentuk pemikir masa depan.",
+      "heroStats": "BERGABUNG DENGAN 15,000+ PEMBELAJAR AKTIF"
+    },
+    "checkoutPage": {
+      "title": "Checkout",
+      "subtitle": "Finalisasi pendaftaran Anda dalam kurikulum elit.",
+      "itemsTitle": "Barang yang Dibeli",
+      "paymentTitle": "Pilih Metode Pembayaran",
+      "summaryTitle": "Ringkasan Pembayaran",
+      "totalPrice": "Total Harga",
+      "discount": "Diskon Institusi",
+      "serviceFee": "Biaya Layanan",
+      "grandTotal": "TOTAL KESELURUHAN",
+      "payButton": "Bayar Sekarang",
+      "securePayment": "Pembayaran Terenkripsi SSL 256-bit Aman",
+      "termsAgreement": "Dengan menyelesaikan transaksi ini, Anda setuju dengan Syarat Pendaftaran dan Kode Kehormatan EduPro Elite.",
+      "virtualAccount": "Virtual Account",
+      "eWallet": "E-Wallet",
+      "creditCard": "Kartu Kredit atau Debit",
+      "cardSupport": "Visa, Mastercard, JCB, Amex"
+    },
+    "cartPage": {
+      "title": "Keranjang Belanja",
+      "subtitle": "kursus dalam portofolio intelektual Anda",
+      "itemsTitle": "Barang dalam Keranjang",
+      "summaryTitle": "Ringkasan Pesanan",
+      "subtotal": "Subtotal",
+      "discount": "Diskon Institusi",
+      "total": "Total",
+      "promoCode": "KODE PROMO",
+      "applyButton": "TERAPKAN",
+      "checkoutButton": "LANJUT KE PEMBAYARAN",
+      "moveToWishlist": "PINDAHKAN KE WISHLIST",
+      "remove": "HAPUS",
+      "secureCheckout": "Checkout Institusi Aman"
+    }
+  },
+  "en": {
+    "hero": {
+      "badge": "New: Data Science Bootcamp 2024",
+      "titleHighlight1": "Elevate Your ",
+      "titleHighlight2": "Career",
+      "titleHighlight3": " with Structured Learning.",
+      "subtitle": "Access thousands of high-quality courses from professional instructors. The best investment is an investment in yourself.",
+      "searchPlaceholder": "Search for your dream course...",
+      "ctaButton": "Start Learning",
+      "trustedBy": "Trusted By:",
+      "studentsCount": "3.5k+ Students",
+      "joinedText": "Just joined"
+    },
+    "category": {
+      "title": "Top Categories",
+      "subtitle": "Discover popular topics and start learning from experts in their fields."
+    },
+    "course": {
+      "titleStart": "What will you learn ",
+      "titleHighlight": "next?",
+      "subtitle": "Our top picks specially curated to accelerate your career growth.",
+      "viewAll": "View All Courses",
+      "emptyStateTitle": "No Courses Yet",
+      "emptyStateSubtitle": "Sorry, there are currently no courses available for this category. We are preparing them for you!",
+      "checkOtherCategory": "Check Other Categories"
+    },
+    "instructor": {
+      "badge": "Become an Instructor",
+      "titleLine1": "Share Your Knowledge & ",
+      "titleLine2": "Inspire Millions of Students.",
+      "subtitle": "EduPro gives you the tools, support, and community to turn your expertise into a globally impactful online course.",
+      "feature1Title": "Video Analytics",
+      "feature1Desc": "Monitor your course performance with in-depth data.",
+      "feature2Title": "Global Community",
+      "feature2Desc": "Connect with students from 190+ countries around the world.",
+      "feature3Title": "Exclusive Brand",
+      "feature3Desc": "Build your reputation as a top industry instructor.",
+      "statsStudents": "Satisfied Students",
+      "statsExperience": "Years Teaching",
+      "ctaButton": "Start Teaching Now",
+      "ctaSubtext": "No registration fee. Start today."
+    },
+    "testimonial": {
+      "title": "What They Say",
+      "subtitle": "Thousands of students have successfully advanced their careers through high-quality courses on our platform."
+    },
+    "modalLanguage": {
+      "title": "Select Language"
+    },
+    "menu": {
+      "categories": "Categories",
+      "courses": "Courses",
+      "mentor": "Mentor",
+      "login": "Login",
+      "register": "Register",
+      "placeholderSearch": "Search for any skill...",
+      "seeAllCategories": "See All Categories",
+      "menuLabel": "Menu",
+      "settingsLabel": "Settings",
+      "languageLabel": "Language",
+      "exploreCategories": "Explore Categories"
+    },
+    "coursesPage": {
+      "badge": "Curated Excellence",
+      "title": "Browse Collections",
+      "subtitle": "A sanctuary of structured wisdom designed for the modern intellectual. Explore our rigorous curriculum led by industry luminaries.",
+      "filters": {
+        "disciplines": "Disciplines",
+        "experience": "Experience Level",
+        "format": "Course Format",
+        "seeMore": "View More Collections"
+      }
+    },
+    "courseDetail": {
+      "enrollNow": "Enroll Now",
+      "scholarship": "Apply for Scholarship",
+      "philosophyTitle": "The Philosophy of the Course",
+      "curriculumTitle": "Curriculum Flow",
+      "viewSyllabus": "View Full Module Syllabus",
+      "mentorWord": "A word from the Mentor",
+      "included": "Included in your access:",
+      "features": [
+        "Lifetime Access",
+        "Private Course Network",
+        "Exclusive Resources",
+        "Digital Certificate"
+      ]
+    },
+    "mentorsPage": {
+      "badge": "Expert Curation",
+      "title": "Learn from the Elite",
+      "subtitle": "A collection of world-class practitioners and thinkers ready to guide your intellectual journey.",
+      "filters": {
+        "expertise": "Expertise",
+        "role": "Role",
+        "seeMore": "View More Mentors"
+      }
+    },
+    "categoriesPage": {
+      "badge": "Explore Interests",
+      "title": "Skill Categories",
+      "subtitle": "Discover a wide range of disciplines curated to guide your professional growth and intellectual mastery."
+    },
+    "loginPage": {
+      "title": "Welcome Back",
+      "subtitle": "Please enter your credentials to access the Executive Lounge.",
+      "emailLabel": "Corporate Email",
+      "passwordLabel": "Password",
+      "forgotPassword": "Forgot Password?",
+      "rememberMe": "Remember this device for 30 days",
+      "submitButton": "Enter the Sanctuary",
+      "socialText": "Or authenticate with",
+      "footerText": "Institutional access required? Apply for Membership",
+      "heroTitle": "Elevate Your Executive Potential.",
+      "heroSubtitle": "Join an elite community of global leaders and lifelong learners dedicated to mastering the art of modern leadership.",
+      "heroStats": "TRUSTED BY 5,000+ GLOBAL LEADERS"
+    },
+    "registerPage": {
+      "title": "Join the Elite",
+      "subtitle": "Start your journey towards intellectual mastery and leadership today.",
+      "nameLabel": "Full Name",
+      "emailLabel": "Corporate Email",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "submitButton": "Create Account",
+      "alreadyHaveAccount": "Already have an account? Login",
+      "termsText": "I agree to the Terms & Conditions and Privacy Policy.",
+      "heroTitle": "Invest in Your Intellectual Future.",
+      "heroSubtitle": "Gain exclusive access to curricula designed to shape the leaders of tomorrow.",
+      "heroStats": "JOIN 15,000+ ACTIVE LEARNERS"
+    },
+    "checkoutPage": {
+      "title": "Checkout",
+      "subtitle": "Finalize your enrollment in the elite curriculum.",
+      "itemsTitle": "Items to Buy",
+      "paymentTitle": "Select Payment Method",
+      "summaryTitle": "Payment Summary",
+      "totalPrice": "Total Price",
+      "discount": "Institutional Discount",
+      "serviceFee": "Service Fee",
+      "grandTotal": "GRAND TOTAL",
+      "payButton": "Pay Now",
+      "securePayment": "Secure 256-bit SSL Encrypted Payment",
+      "termsAgreement": "By completing this transaction, you agree to the EduPro Elite Terms of Enrollment and Honor Code.",
+      "virtualAccount": "Virtual Account",
+      "eWallet": "E-Wallet",
+      "creditCard": "Credit or Debit Card",
+      "cardSupport": "Visa, Mastercard, JCB, Amex"
+    },
+    "cartPage": {
+      "title": "Shopping Cart",
+      "subtitle": "courses in your intellectual portfolio",
+      "itemsTitle": "Items in Cart",
+      "summaryTitle": "Order Summary",
+      "subtotal": "Subtotal",
+      "discount": "Institutional Discount",
+      "total": "Total",
+      "promoCode": "PROMO CODE",
+      "applyButton": "APPLY",
+      "checkoutButton": "PROCEED TO CHECKOUT",
+      "moveToWishlist": "MOVE TO WISHLIST",
+      "remove": "REMOVE",
+      "secureCheckout": "Secure Institutional Checkout"
+    }
+  }
+}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 const TESTIMONIALS = [
   {
@@ -29,6 +30,9 @@ const TESTIMONIALS = [
 ];
 
 export default function TestimonialSection() {
+  const { t: translations } = useLanguage();
+  const t = translations.testimonial;
+
   return (
     <section className="w-full py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
@@ -39,7 +43,7 @@ export default function TestimonialSection() {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-extrabold text-secondary tracking-tight"
           >
-            Apa Kata Mereka?
+            {t.title}
           </motion.h2>
           <motion.div 
             initial={{ width: 0 }}
@@ -55,7 +59,7 @@ export default function TestimonialSection() {
             transition={{ delay: 0.3 }}
             className="text-gray-500 max-w-lg"
           >
-            Ribuan pelajar telah berhasil meningkatkan karier mereka melalui kursus berkualitas di platform kami.
+            {t.subtitle}
           </motion.p>
         </div>
 

@@ -4,8 +4,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, Video } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 export default function InstructorSection() {
+  const { t: translations } = useLanguage();
+  const t = translations.instructor;
+
   return (
     <section className="w-full py-24 md:py-40 bg-white overflow-hidden relative">
       {/* Enhanced Primary Transparent Mesh Gradients */}
@@ -24,7 +28,7 @@ export default function InstructorSection() {
             viewport={{ once: true }}
             className="px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[13px] font-bold uppercase tracking-widest border border-primary/10"
           >
-            Menjadi Pengajar
+            {t.badge}
           </motion.div>
 
           <motion.h2
@@ -34,8 +38,8 @@ export default function InstructorSection() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl lg:text-7xl font-bold text-secondary leading-[1.1] tracking-tight max-w-4xl"
           >
-            Bagikan Ilmu Anda & <br />
-            <span className="text-primary italic">Inspirasi Jutaan Pelajar.</span>
+            {t.titleLine1}<br />
+            <span className="text-primary italic">{t.titleLine2}</span>
           </motion.h2>
 
           <motion.p
@@ -45,16 +49,16 @@ export default function InstructorSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-medium"
           >
-            EduPro memberikan Anda alat, dukungan, dan komunitas untuk mengubah keahlian Anda menjadi kursus online yang berdampak global.
+            {t.subtitle}
           </motion.p>
         </div>
 
         {/* Features Row - Symmetrical */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           {[
-            { icon: Video, title: "Video Analytics", desc: "Pantau performa kursus Anda dengan data yang mendalam." },
-            { icon: Users, title: "Komunitas Global", desc: "Terhubung dengan pelajar dari 190+ negara di dunia." },
-            { icon: Star, title: "Brand Eksklusif", desc: "Bangun reputasi Anda sebagai instruktur top industri." }
+            { icon: Video, title: t.feature1Title, desc: t.feature1Desc },
+            { icon: Users, title: t.feature2Title, desc: t.feature2Desc },
+            { icon: Star, title: t.feature3Title, desc: t.feature3Desc }
           ].map((feature, idx) => (
             <motion.div
               key={idx}
@@ -87,7 +91,7 @@ export default function InstructorSection() {
               alt="Instructor"
               fill
               className="object-cover object-top"
-              sizes="100vw"
+              sizes="(max-width: 1024px) 100vw, 896px"
             />
           </motion.div>
 
@@ -107,7 +111,7 @@ export default function InstructorSection() {
               ))}
             </div>
             <p className="text-3xl font-black text-secondary leading-none">150k+</p>
-            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-2">Pelajar Puas</p>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-2">{t.statsStudents}</p>
           </motion.div>
 
           {/* Floating Experience */}
@@ -119,17 +123,17 @@ export default function InstructorSection() {
             className="absolute -top-12 -left-4 md:top-20 md:-left-12 bg-primary p-6 md:p-8 rounded-3xl shadow-2xl z-20 text-white text-center"
           >
             <p className="text-4xl font-black">10+</p>
-            <p className="text-[10px] font-bold text-primary-foreground/60 uppercase tracking-wider">Tahun Mengajar</p>
+            <p className="text-[10px] font-bold text-primary-foreground/60 uppercase tracking-wider">{t.statsExperience}</p>
           </motion.div>
         </div>
 
         {/* CTA Button */}
         <div className="mt-24 flex flex-col items-center gap-6">
           <Button size="lg" className="h-16 px-12 bg-secondary hover:bg-secondary/90 text-white font-bold rounded-2xl shadow-xl shadow-secondary/10 gap-3 text-xl transition-all hover:scale-105 active:scale-95">
-            Mulai Mengajar Sekarang
+            {t.ctaButton}
             <ArrowRight className="w-6 h-6" />
           </Button>
-          <p className="text-gray-400 font-medium">Bebas biaya pendaftaran. Mulai hari ini.</p>
+          <p className="text-gray-400 font-medium">{t.ctaSubtext}</p>
         </div>
       </div>
     </section>

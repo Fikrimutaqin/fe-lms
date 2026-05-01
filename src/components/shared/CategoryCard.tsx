@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface CategoryCardProps {
   title: string;
@@ -7,7 +8,7 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ title, image }: CategoryCardProps) {
   return (
-    <div className="flex flex-col gap-6 group cursor-pointer items-center">
+    <Link href="/categories" className="flex flex-col gap-6 group cursor-pointer items-center">
       <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-white group-hover:shadow-primary/20 transition-all duration-500 group-hover:-translate-y-3">
         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors z-10" />
         <Image 
@@ -24,6 +25,6 @@ export default function CategoryCard({ title, image }: CategoryCardProps) {
         </h3>
         <p className="text-xs text-gray-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">1,200+ Courses</p>
       </div>
-    </div>
+    </Link>
   );
 }

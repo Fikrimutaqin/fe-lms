@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Star, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -14,7 +15,7 @@ interface CourseCardProps {
 
 export default function CourseCard({ title, instructor, rating, reviews, price, image, badge }: CourseCardProps) {
   return (
-    <div className="flex flex-col group cursor-pointer bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+    <Link href="/courses/1" className="flex flex-col group cursor-pointer bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] h-full">
       {/* Course Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-50">
         <Image 
@@ -57,6 +58,6 @@ export default function CourseCard({ title, instructor, rating, reviews, price, 
           <span className="font-black text-lg text-secondary">{price}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

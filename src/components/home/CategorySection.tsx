@@ -2,6 +2,7 @@
 
 import CategoryCard from "../shared/CategoryCard";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 const CATEGORIES = [
   { title: "Development", image: "/assets/images/cat-dev.png" },
@@ -11,6 +12,9 @@ const CATEGORIES = [
 ];
 
 export default function CategorySection() {
+  const { t: translations } = useLanguage();
+  const t = translations.category;
+
   return (
     <section className="w-full py-24 bg-gray-50/50">
       <div className="container mx-auto px-4">
@@ -22,10 +26,10 @@ export default function CategorySection() {
           className="flex flex-col items-center text-center space-y-4 mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-extrabold text-secondary tracking-tight">
-            Kategori Teratas
+            {t.title}
           </h2>
           <div className="w-20 h-1.5 bg-primary rounded-full" />
-          <p className="text-gray-500 max-w-lg">Temukan topik populer dan mulai belajar dari para ahli di bidangnya.</p>
+          <p className="text-gray-500 max-w-lg">{t.subtitle}</p>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">

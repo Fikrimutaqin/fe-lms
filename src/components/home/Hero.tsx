@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Search, ArrowRight } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 export default function Hero() {
+  const { t: translations } = useLanguage();
+  const t = translations.hero;
+
   return (
     <section className="relative w-full bg-white pt-16 pb-20 lg:pt-28 lg:pb-40 overflow-hidden">
       {/* Enhanced Primary Transparent Mesh Gradients */}
@@ -31,7 +35,7 @@ export default function Hero() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                Baru: Bootcamp Data Science 2024
+                {t.badge}
               </motion.div>
 
               <motion.h1
@@ -40,7 +44,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-secondary leading-[1.2] md:leading-[1.1]"
               >
-                Tingkatkan <span className="text-primary">Karier</span> Anda dengan Belajar Terstruktur.
+                {t.titleHighlight1}<span className="text-primary">{t.titleHighlight2}</span>{t.titleHighlight3}
               </motion.h1>
 
               <motion.p
@@ -49,8 +53,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium"
               >
-                Akses ribuan kursus berkualitas tinggi dari instruktur profesional.
-                Investasi terbaik adalah investasi pada diri Anda sendiri.
+                {t.subtitle}
               </motion.p>
             </div>
 
@@ -64,12 +67,12 @@ export default function Hero() {
               <div className="relative flex-1 w-full group">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-primary transition-colors" />
                 <Input
-                  placeholder="Cari kursus idaman Anda..."
+                  placeholder={t.searchPlaceholder}
                   className="h-14 pl-12 pr-4 bg-white border-gray-200 rounded-xl shadow-sm focus-visible:ring-primary/20 focus-visible:border-primary transition-all text-base"
                 />
               </div>
               <Button size="lg" className="h-14 px-8 bg-secondary hover:bg-secondary/90 text-white font-bold rounded-xl shadow-lg shadow-secondary/10 w-full sm:w-auto">
-                Mulai Belajar
+                {t.ctaButton}
               </Button>
             </motion.div>
 
@@ -80,7 +83,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.8 }}
               className="pt-6 md:pt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-8 opacity-40 grayscale"
             >
-              <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary opacity-60 w-full lg:w-auto mb-2 lg:mb-0">Dipercaya Oleh:</span>
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary opacity-60 w-full lg:w-auto mb-2 lg:mb-0">{t.trustedBy}</span>
               <div className="flex gap-6 md:gap-8 items-center flex-wrap justify-center lg:justify-start">
                 <div className="font-black text-lg md:text-xl tracking-tighter">TECHCORP</div>
                 <div className="font-black text-lg md:text-xl tracking-tighter">GLOBALEDU</div>
@@ -126,8 +129,8 @@ export default function Hero() {
                   ))}
                 </div>
                 <div>
-                  <p className="text-[12px] md:text-sm font-bold text-secondary">3.5k+ Pelajar</p>
-                  <p className="text-[9px] md:text-[11px] text-gray-500 font-medium">Baru saja bergabung</p>
+                  <p className="text-[12px] md:text-sm font-bold text-secondary">{t.studentsCount}</p>
+                  <p className="text-[9px] md:text-[11px] text-gray-500 font-medium">{t.joinedText}</p>
                 </div>
               </motion.div>
             </div>

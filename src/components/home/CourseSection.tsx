@@ -6,6 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { SearchX, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/providers/LanguageProvider";
+import Link from "next/link";
 
 // Mock Data Mapping
 const COURSE_DATA: Record<string, any[]> = {
@@ -48,6 +50,8 @@ const COURSE_DATA: Record<string, any[]> = {
 
 export default function CourseSection() {
   const [activeTab, setActiveTab] = useState("python");
+  const { t: translations } = useLanguage();
+  const t = translations.course;
 
   return (
     <section className="w-full py-24 bg-white">
@@ -62,10 +66,10 @@ export default function CourseSection() {
             className="space-y-4"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-secondary tracking-tight">
-              Apa yang akan dipelajari <span className="text-primary italic">selanjutnya?</span>
+              {t.titleStart}<span className="text-primary italic">{t.titleHighlight}</span>
             </h2>
             <p className="text-gray-400 text-base md:text-lg max-w-xl font-medium">
-              Pilihan teratas kami yang dikurasi khusus untuk mempercepat pertumbuhan karier Anda.
+              {t.subtitle}
             </p>
           </motion.div>
 
@@ -76,12 +80,12 @@ export default function CourseSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden md:block"
           >
-            <button className="text-sm font-bold text-primary flex items-center gap-2 group border-b border-primary/20 pb-1 hover:border-primary transition-all">
-              Lihat Semua Kursus
+            <Link href="/courses" className="text-sm font-bold text-primary flex items-center gap-2 group border-b border-primary/20 pb-1 hover:border-primary transition-all">
+              {t.viewAll}
               <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
               </div>
-            </button>
+            </Link>
           </motion.div>
         </div>
 
@@ -129,9 +133,9 @@ export default function CourseSection() {
                       <SearchX className="w-10 h-10 text-gray-300" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-bold text-secondary">Belum Ada Kursus</h3>
+                      <h3 className="text-2xl font-bold text-secondary">{t.emptyStateTitle}</h3>
                       <p className="text-gray-400 max-w-xs mx-auto font-medium">
-                        Maaf, saat ini belum ada kursus yang tersedia untuk kategori ini. Kami sedang menyiapkannya untuk Anda!
+                        {t.emptyStateSubtitle}
                       </p>
                     </div>
                     <Button
@@ -139,7 +143,7 @@ export default function CourseSection() {
                       onClick={() => document.getElementById('python-tab')?.click()}
                       className="rounded-full border-gray-200 font-bold text-secondary gap-2 hover:bg-white hover:shadow-sm transition-all"
                     >
-                      Cek Kategori Lain
+                      {t.checkOtherCategory}
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
