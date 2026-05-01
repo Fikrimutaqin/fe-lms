@@ -1,8 +1,14 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isDashboard = pathname.startsWith('/dashboard');
+
+  if (isDashboard) return null;
+
   return (
     <footer className="bg-secondary text-white pt-16 pb-8">
       <div className="container mx-auto px-4">

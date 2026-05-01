@@ -25,6 +25,7 @@ export default function LoginPage() {
           fill
           className="object-cover opacity-60 grayscale"
           priority
+          sizes="(max-width: 768px) 0vw, 50vw"
         />
         <div className="absolute inset-0 bg-linear-to-t from-secondary via-secondary/20 to-transparent" />
 
@@ -48,7 +49,13 @@ export default function LoginPage() {
             <div className="flex -space-x-3">
               {[1, 2, 3].map(i => (
                 <div key={i} className="w-10 h-10 rounded-full border-2 border-secondary overflow-hidden relative bg-gray-800">
-                  <Image src={`/assets/images/user-${i}.png`} alt="User" fill className="object-cover" />
+                  <Image 
+                    src={`/assets/images/user-${i}.png`} 
+                    alt="User" 
+                    fill 
+                    className="object-cover" 
+                    sizes="40px"
+                  />
                 </div>
               ))}
             </div>

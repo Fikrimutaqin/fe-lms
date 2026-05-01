@@ -162,6 +162,32 @@
       "moveToWishlist": "PINDAHKAN KE WISHLIST",
       "remove": "HAPUS",
       "secureCheckout": "Checkout Institusi Aman"
+    },
+    "dashboardPage": {
+      "welcome": "Selamat datang kembali,",
+      "journey": "Perjalanan intelektual Anda berlanjut.",
+      "dailyMasterclass": "Masterclass Harian",
+      "inProgress": "Sedang Berjalan",
+      "viewAll": "Lihat Semua Kurikulum",
+      "learningAnalytics": "Analisis Pembelajaran",
+      "totalProgress": "Total Progres",
+      "coursesCompleted": "Kursus Selesai",
+      "totalPoints": "Total Poin",
+      "nextSession": "Sesi Mentorship Berikutnya",
+      "recentTransactions": "Transaksi Terakhir",
+      "sidebar": {
+        "dashboard": "Dashboard",
+        "myCourses": "Kursus Saya",
+        "mentors": "Mentor",
+        "transactions": "Transaksi",
+        "settings": "Pengaturan"
+      },
+      "table": {
+        "course": "Kursus/Item",
+        "date": "Tanggal",
+        "amount": "Jumlah",
+        "status": "Status"
+      }
     }
   },
   "en": {
@@ -327,6 +353,32 @@
       "moveToWishlist": "MOVE TO WISHLIST",
       "remove": "REMOVE",
       "secureCheckout": "Secure Institutional Checkout"
+    },
+    "dashboardPage": {
+      "welcome": "Welcome back,",
+      "journey": "Your intellectual journey continues.",
+      "dailyMasterclass": "Daily Masterclass",
+      "inProgress": "In Progress",
+      "viewAll": "View All Curriculum",
+      "learningAnalytics": "Learning Analytics",
+      "totalProgress": "Total Progress",
+      "coursesCompleted": "Courses Completed",
+      "totalPoints": "Total Points",
+      "nextSession": "Next Mentorship Session",
+      "recentTransactions": "Recent Transactions",
+      "sidebar": {
+        "dashboard": "Dashboard",
+        "myCourses": "My Courses",
+        "mentors": "Mentors",
+        "transactions": "Transactions",
+        "settings": "Settings"
+      },
+      "table": {
+        "course": "Course/Item",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status"
+      }
     }
   }
 }

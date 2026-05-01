@@ -32,6 +32,10 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  const isDashboard = pathname.startsWith('/dashboard');
+
+  if (isDashboard) return null;
+
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl">
@@ -73,6 +77,16 @@ export default function Navbar() {
               >
                 {t.menu.mentor}
                 {isActive('/mentors') && (
+                  <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
+                )}
+              </Link>
+              <Link
+                href="/dashboard"
+                className={`text-sm font-bold transition-all relative ${isActive('/dashboard') ? 'text-primary' : 'text-secondary hover:text-primary'
+                  }`}
+              >
+                Dashboard
+                {isActive('/dashboard') && (
                   <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
                 )}
               </Link>
