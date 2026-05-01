@@ -17,11 +17,11 @@ export default function CourseCard({ title, instructor, rating, reviews, price, 
   return (
     <Link href="/courses/1" className="flex flex-col group cursor-pointer bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] h-full">
       {/* Course Image */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-50">
-        <Image 
-          src={image} 
-          alt={title} 
-          fill 
+      <div className="relative aspect-16/10 w-full overflow-hidden bg-gray-50">
+        <Image
+          src={image}
+          alt={title}
+          fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
@@ -46,7 +46,7 @@ export default function CourseCard({ title, instructor, rating, reviews, price, 
           </div>
           <p className="text-xs text-gray-400 font-medium tracking-wide uppercase">{instructor}</p>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             <div className="flex text-amber-400">
