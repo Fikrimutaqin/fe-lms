@@ -38,17 +38,17 @@ export default function DashboardLayout({
   const [isExpanded, setIsExpanded] = useState(true);
 
   return (
-    <div className="fixed inset-0 z-[200] bg-[#F8F9FA] flex overflow-hidden font-sans">
-      
+    <div className="fixed inset-0 z-200 bg-[#F8F9FA] flex overflow-hidden font-sans">
+
       {/* Sidebar */}
-      <motion.aside 
+      <motion.aside
         initial={false}
         animate={{ width: isExpanded ? 256 : 88 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="bg-white border-r border-gray-100 flex flex-col shrink-0 relative"
       >
         {/* Toggle Button */}
-        <button 
+        <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="absolute -right-3 top-10 w-6 h-6 bg-white border border-gray-100 rounded-full flex items-center justify-center text-gray-400 hover:text-primary shadow-sm z-50 transition-colors"
         >
@@ -61,7 +61,7 @@ export default function DashboardLayout({
               <span className="text-white font-black text-xl">E</span>
             </div>
             {isExpanded && (
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="text-xl font-black tracking-tighter text-secondary whitespace-nowrap"
@@ -78,15 +78,14 @@ export default function DashboardLayout({
               key={item.id}
               href={item.href}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all font-bold text-sm h-12 ${
-                activeTab === item.id 
-                ? "bg-primary/5 text-primary shadow-sm shadow-primary/5" 
-                : "text-gray-400 hover:text-secondary hover:bg-gray-50"
-              }`}
+              className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl transition-all font-bold text-sm h-12 ${activeTab === item.id
+                  ? "bg-primary/5 text-primary shadow-sm shadow-primary/5"
+                  : "text-gray-400 hover:text-secondary hover:bg-gray-50"
+                }`}
             >
               <item.icon className="w-5 h-5 shrink-0" />
               {isExpanded && (
-                <motion.span 
+                <motion.span
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="whitespace-nowrap"
@@ -107,7 +106,7 @@ export default function DashboardLayout({
               <Image src="/assets/images/user-1.png" alt="User" fill className="object-cover" sizes="40px" />
             </div>
             {isExpanded && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="flex-1 min-w-0"
