@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, ShoppingCart, Globe, ChevronDown, Menu, X } from "lucide-react";
+import { Search, ShoppingCart, Globe, ChevronDown, Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
@@ -20,7 +20,6 @@ export default function Navbar() {
 
   const isActive = (path: string) => pathname === path;
 
-  // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -32,34 +31,20 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
-  const isDashboard = pathname.startsWith('/dashboard');
-
-  if (isDashboard) return null;
-
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-xl">
         <div className="container mx-auto px-4 flex h-16 md:h-22 items-center justify-between gap-4 md:gap-8">
           {/* Logo & Categories */}
-          <div className="flex items-center gap-8 shrink-0">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 md:w-11 md:h-11 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
-                <span className="text-white font-black text-xl md:text-2xl">E</span>
+          <div className="flex items-center gap-10 shrink-0">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
+                <span className="text-white font-black text-xl md:text-2xl">N</span>
               </div>
-              <span className="text-2xl font-black tracking-tighter text-secondary hidden sm:block">EduPro</span>
+              <span className="text-2xl font-black tracking-tighter text-secondary hidden sm:block">NexLearn</span>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-6">
-              <Link
-                href="/categories"
-                className={`text-sm font-bold transition-all relative ${isActive('/categories') ? 'text-primary' : 'text-secondary hover:text-primary'
-                  }`}
-              >
-                {t.menu.categories}
-                {isActive('/categories') && (
-                  <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
-                )}
-              </Link>
+            <nav className="hidden lg:flex items-center gap-8">
               <Link
                 href="/courses"
                 className={`text-sm font-bold transition-all relative ${isActive('/courses') ? 'text-primary' : 'text-secondary hover:text-primary'
@@ -67,40 +52,31 @@ export default function Navbar() {
               >
                 {t.menu.courses}
                 {isActive('/courses') && (
-                  <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
+                  <motion.div layoutId="activeNav" className="absolute bottom-[-32px] left-0 right-0 h-1 bg-primary rounded-t-full" />
                 )}
               </Link>
               <Link
                 href="/mentors"
-                className={`text-sm font-bold transition-all relative ${isActive('/mentors') ? 'text-primary' : 'text-secondary hover:text-primary'
+                className={`text-sm font-bold transition-all relative flex items-center gap-2 ${isActive('/mentors') ? 'text-primary' : 'text-secondary hover:text-primary'
                   }`}
               >
                 {t.menu.mentor}
+                <span className="bg-primary/10 text-primary text-[8px] px-1.5 py-0.5 rounded-md font-black uppercase">New</span>
                 {isActive('/mentors') && (
-                  <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
-                )}
-              </Link>
-              <Link
-                href="/dashboard"
-                className={`text-sm font-bold transition-all relative ${isActive('/dashboard') ? 'text-primary' : 'text-secondary hover:text-primary'
-                  }`}
-              >
-                Dashboard
-                {isActive('/dashboard') && (
-                  <motion.div layoutId="activeNav" className="absolute bottom-[-29px] left-0 right-0 h-1 bg-primary rounded-t-full" />
+                  <motion.div layoutId="activeNav" className="absolute bottom-[-32px] left-0 right-0 h-1 bg-primary rounded-t-full" />
                 )}
               </Link>
             </nav>
           </div>
 
-          {/* Search Bar - Centered Flexible */}
-          <div className="flex-1 max-w-xl hidden md:flex relative group mx-4">
+          {/* Search Bar */}
+          <div className="flex-1 max-w-md hidden xl:flex relative group mx-4">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors">
-              <Search className="h-5 w-5" />
+              <Search className="h-4 w-4" />
             </div>
             <Input
               placeholder={t.menu.placeholderSearch}
-              className="w-full pl-12 h-12 bg-gray-50 border-gray-100 rounded-full focus-visible:ring-primary/20 focus-visible:border-primary transition-all text-sm font-medium shadow-inner"
+              className="w-full pl-11 h-11 bg-gray-50 border-gray-100 rounded-full focus-visible:ring-primary/20 focus-visible:border-primary transition-all text-xs font-medium shadow-inner"
             />
           </div>
 
@@ -116,7 +92,6 @@ export default function Navbar() {
                 </Button>
               </Link>
 
-              {/* Language Switcher Desktop */}
               <Button
                 variant="ghost"
                 onClick={() => setIsLangModalOpen(true)}
@@ -131,27 +106,24 @@ export default function Navbar() {
 
             <div className="hidden md:flex items-center gap-2 md:gap-4 md:border-l md:pl-6">
               <Link href="/login">
-                <Button 
-                  variant="ghost" 
-                  className={`font-bold px-6 rounded-full w-full transition-all ${
-                    isActive('/login') ? 'text-primary bg-primary/5' : 'text-secondary hover:text-primary'
-                  }`}
+                <Button
+                  variant="ghost"
+                  className={`font-black text-xs uppercase tracking-widest px-6 rounded-full w-full transition-all ${isActive('/login') ? 'text-primary bg-primary/5' : 'text-secondary hover:text-primary'
+                    }`}
                 >
                   {t.menu.login}
                 </Button>
               </Link>
               <Link href="/register">
-                <Button 
-                  className={`font-bold px-6 md:px-10 h-10 md:h-13 rounded-full shadow-xl transition-all hover:scale-105 active:scale-95 text-xs md:text-sm ${
-                    isActive('/register') ? 'bg-primary text-white shadow-primary/20' : 'bg-secondary hover:bg-secondary/90 text-white shadow-secondary/20'
-                  }`}
+                <Button
+                  className={`font-black text-xs uppercase tracking-widest px-8 md:px-10 h-11 md:h-12 rounded-full shadow-xl transition-all hover:scale-105 active:scale-95 ${isActive('/register') ? 'bg-primary text-white shadow-primary/20' : 'bg-secondary hover:bg-secondary/90 text-white shadow-secondary/20'
+                    }`}
                 >
                   {t.menu.register}
                 </Button>
               </Link>
             </div>
 
-            {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
               size="icon"
@@ -164,11 +136,10 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Sidebar Navigation */}
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -177,7 +148,6 @@ export default function Navbar() {
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-100 md:hidden"
             />
 
-            {/* Menu Content */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -185,136 +155,44 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-101 md:hidden shadow-2xl flex flex-col"
             >
-              {/* Mobile Menu Header */}
               <div className="p-6 flex items-center justify-between border-b border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                    <span className="text-white font-black text-lg">E</span>
+                    <span className="text-white font-black text-lg">N</span>
                   </div>
-                  <span className="font-black text-secondary">EduPro</span>
+                  <span className="font-black text-secondary">NexLearn</span>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="rounded-full hover:bg-gray-100"
-                >
+                <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="rounded-full hover:bg-gray-100">
                   <X className="w-6 h-6 text-gray-500" />
                 </Button>
               </div>
 
-              {/* Mobile Menu Items */}
               <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                {/* Search in Mobile */}
                 <div className="relative group">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    placeholder={t.menu.placeholderSearch}
-                    className="h-12 pl-12 bg-gray-50 border-none rounded-xl"
-                  />
+                  <Input placeholder={t.menu.placeholderSearch} className="h-12 pl-12 bg-gray-50 border-none rounded-xl" />
                 </div>
 
                 <nav className="space-y-4">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2">{t.menu.menuLabel}</p>
-
-                  {/* Mobile Categories Accordion */}
-                  <div className="space-y-2">
-                    <button
-                      onClick={() => setIsMobileCategoryOpen(!isMobileCategoryOpen)}
-                      className={`w-full flex items-center justify-between p-3 rounded-xl transition-all font-bold ${isMobileCategoryOpen ? 'bg-primary/5 text-primary' : 'hover:bg-primary/5 text-secondary'}`}
-                    >
-                      {t.menu.categories}
-                      <ChevronDown className={`w-4 h-4 transition-transform ${isMobileCategoryOpen ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    <AnimatePresence>
-                      {isMobileCategoryOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden space-y-2 pl-2"
-                        >
-                          {[
-                            { title: "Development", image: "/assets/images/cat-dev.png" },
-                            { title: "Business", image: "/assets/images/cat-biz.png" },
-                            { title: "Design", image: "/assets/images/cat-design.png" },
-                            { title: "Marketing", image: "/assets/images/cat-design.png" },
-                          ].map((cat, idx) => (
-                            <Link
-                              key={idx}
-                              href="#"
-                              className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-all"
-                            >
-                              <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-gray-100 shrink-0">
-                                <Image src={cat.image} alt={cat.title} fill className="object-cover" sizes="40px" />
-                              </div>
-                              <span className="text-sm font-bold text-secondary">{cat.title}</span>
-                            </Link>
-                          ))}
-                          <Link href="#" className="flex items-center justify-center p-3 mt-2 text-xs font-bold text-primary bg-primary/5 rounded-xl hover:bg-primary/10 transition-all">
-                            {t.menu.seeAllCategories}
-                          </Link>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <Link
-                    href="/courses"
-                    className={`flex items-center p-3 rounded-xl transition-all font-bold ${isActive('/courses') ? 'bg-primary/5 text-primary' : 'hover:bg-primary/5 text-secondary'
-                      }`}
-                  >
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2">Academy</p>
+                  <Link href="/courses" className="flex items-center p-3 rounded-xl hover:bg-primary/5 text-secondary font-bold transition-all">
                     {t.menu.courses}
                   </Link>
-                  <Link
-                    href="/mentors"
-                    className={`flex items-center p-3 rounded-xl transition-all font-bold ${isActive('/mentors') ? 'bg-primary/5 text-primary' : 'hover:bg-primary/5 text-secondary'
-                      }`}
-                  >
+                  <Link href="/mentors" className="flex items-center justify-between p-3 rounded-xl hover:bg-primary/5 text-secondary font-bold transition-all">
                     {t.menu.mentor}
+                    <span className="bg-primary/10 text-primary text-[8px] px-1.5 py-0.5 rounded-md font-black uppercase">New</span>
                   </Link>
                 </nav>
-
-                <div className="pt-4 border-t border-gray-100 space-y-4">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2">{t.menu.settingsLabel}</p>
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      setIsLangModalOpen(true);
-                    }}
-                    className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-primary/5 text-secondary font-bold transition-all"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Globe className="w-5 h-5 text-gray-400" />
-                      <span>{t.menu.languageLabel}</span>
-                    </div>
-                    <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-md uppercase">
-                      {language === "id" ? "ID" : "EN"}
-                    </span>
-                  </button>
-                </div>
               </div>
 
-              {/* Mobile Auth Buttons */}
               <div className="p-6 border-t border-gray-100 bg-gray-50/50 space-y-3">
                 <Link href="/login">
-                  <Button 
-                    variant={isActive('/login') ? "default" : "outline"} 
-                    className={`w-full h-12 rounded-xl font-bold transition-all ${
-                      isActive('/login') ? 'bg-primary text-white border-none' : 'border-gray-200 text-secondary'
-                    }`}
-                  >
+                  <Button className="w-full h-12 rounded-xl font-bold bg-white border border-gray-200 text-secondary hover:bg-gray-50">
                     {t.menu.login}
                   </Button>
                 </Link>
                 <Link href="/register">
-                  <Button 
-                    variant={isActive('/register') ? "default" : "default"} 
-                    className={`w-full h-12 rounded-xl font-bold transition-all ${
-                      isActive('/register') ? 'bg-primary text-white' : 'bg-secondary hover:bg-secondary/90 text-white'
-                    }`}
-                  >
+                  <Button className="w-full h-12 lg:mt-0 mt-2 rounded-xl font-bold bg-secondary text-white hover:bg-secondary/90">
                     {t.menu.register}
                   </Button>
                 </Link>

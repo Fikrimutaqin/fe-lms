@@ -47,7 +47,7 @@ export default function CourseCard({ title, instructor, rating, reviews, price, 
           <p className="text-xs text-gray-400 font-medium tracking-wide uppercase">{instructor}</p>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap">
           <div className="flex items-center gap-1.5">
             <div className="flex text-amber-400">
               <Star className="h-3.5 w-3.5 fill-current" />

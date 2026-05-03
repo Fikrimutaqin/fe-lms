@@ -8,45 +8,7 @@ import { SearchX, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/providers/LanguageProvider";
 import Link from "next/link";
-
-// Mock Data Mapping
-const COURSE_DATA: Record<string, any[]> = {
-  python: [
-    {
-      title: "The Complete 2024 Python Bootcamp: From Zero to Hero",
-      instructor: "Jose Portilla, Dr. Angela Yu",
-      rating: 4.8,
-      reviews: "452,102",
-      price: "Rp 129.000",
-      image: "/assets/images/cat-dev.png",
-      badge: "BESTSELLER"
-    },
-    {
-      title: "Data Science & Machine Learning with Python",
-      instructor: "Kirill Eremenko, Hadelin de Ponteves",
-      rating: 4.8,
-      reviews: "25,781",
-      price: "Rp 159.000",
-      image: "/assets/images/cat-dev.png",
-      badge: "BESTSELLER"
-    }
-  ],
-  javascript: [
-    {
-      title: "Modern Web Development with React & Next.js",
-      instructor: "Sarah Drasner, Maximilian Schwarzmüller",
-      rating: 4.9,
-      reviews: "88,490",
-      price: "Rp 149.000",
-      image: "/assets/images/cat-design.png",
-      badge: "NEW"
-    }
-  ],
-  // Other categories are empty for testing empty state
-  excel: [],
-  "web-development": [],
-  "data-science": []
-};
+import { COURSE_DATA, COURSE_CATEGORIES } from "@/data/home";
 
 export default function CourseSection() {
   const [activeTab, setActiveTab] = useState("python");
@@ -100,7 +62,7 @@ export default function CourseSection() {
           <Tabs defaultValue="python" onValueChange={setActiveTab} className="w-full">
             <div className="overflow-x-auto pb-2 scrollbar-hide">
               <TabsList className="bg-gray-100/50 p-1.5 gap-1 inline-flex h-auto rounded-2xl border border-gray-100 mb-8 md:mb-12 min-w-max">
-                {["Python", "Excel", "Web Development", "JavaScript", "Data Science"].map((tab) => (
+                {COURSE_CATEGORIES.map((tab) => (
                   <TabsTrigger
                     key={tab}
                     value={tab.toLowerCase().replace(' ', '-')}
@@ -140,7 +102,7 @@ export default function CourseSection() {
                     </div>
                     <Button
                       variant="outline"
-                      onClick={() => document.getElementById('python-tab')?.click()}
+                      onClick={() => setActiveTab("python")}
                       className="rounded-full border-gray-200 font-bold text-secondary gap-2 hover:bg-white hover:shadow-sm transition-all"
                     >
                       {t.checkOtherCategory}

@@ -2,13 +2,14 @@
 
 import { useLanguage } from "@/providers/LanguageProvider";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowRight, Eye } from "lucide-react";
 
+// Components
+import AuthHero from "@/components/auth/AuthHero";
 
 export default function RegisterPage() {
   const { t } = useLanguage();
@@ -17,54 +18,12 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col md:flex-row relative">
 
-      {/* Left Side: Visual & Brand */}
-      <div className="relative flex-1 hidden md:flex flex-col justify-end p-16 overflow-hidden bg-secondary">
-        <Image
-          src="/assets/images/register-bg.png"
-          alt="Luxury Library"
-          fill
-          className="object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-1000"
-          priority
-          sizes="50vw"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-secondary via-secondary/10 to-transparent" />
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 space-y-6"
-        >
-          <div className="text-[11px] font-black text-primary uppercase tracking-[0.3em]">
-            Elite Membership Program
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
-            {r.heroTitle}
-          </h1>
-          <p className="text-gray-400 max-w-lg font-medium leading-relaxed">
-            {r.heroSubtitle}
-          </p>
-
-          <div className="pt-8 flex items-center gap-6">
-            <div className="flex -space-x-3">
-              {[4, 5, 6].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-secondary overflow-hidden relative bg-gray-800">
-                  <Image 
-                    src={`/assets/images/user-${i > 3 ? i - 3 : i}.png`} 
-                    alt="User" 
-                    fill 
-                    className="object-cover" 
-                    sizes="40px"
-                  />
-                </div>
-              ))}
-            </div>
-            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-              {r.heroStats}
-            </span>
-          </div>
-        </motion.div>
-      </div>
+      <AuthHero 
+        title={r.heroTitle}
+        subtitle={r.heroSubtitle}
+        stats={r.heroStats}
+        bgImage="/assets/images/register-bg.png"
+      />
 
       {/* Right Side: Register Form */}
       <div className="flex-1 bg-white flex items-center justify-center p-6 sm:p-12 md:p-16 relative">

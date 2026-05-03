@@ -31,7 +31,7 @@ export default function LanguageModal({ isOpen, onClose }: LanguageModalProps) {
       {isOpen && (
         <motion.div
           key="language-modal-overlay"
-          className="fixed inset-0 z-101 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
         >
           {/* Backdrop */}
           <motion.div

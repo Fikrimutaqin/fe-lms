@@ -6,53 +6,7 @@ import { useLanguage } from "@/providers/LanguageProvider";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
-const COURSES_DATA = [
-  {
-    image: "/assets/images/course-1.png",
-    category: "Architecture",
-    tag: "Cohort Starts Nov 24",
-    title: "The Architect of Decisions: Strategic Frameworks for Modern Executives",
-    description: "Master the cognitive tools used by world leaders to navigate high-stakes environments and build lasting legacy structures.",
-    instructorName: "Dr. Julian Sterling",
-    instructorImage: "/assets/images/user-1.png",
-    price: "$2,400",
-    rating: 4.9
-  },
-  {
-    image: "/assets/images/course-2.png",
-    category: "Design Theory",
-    tag: "Self-Paced Access",
-    title: "Digital Minimalism: Designing for Cognitive Longevity",
-    description: "An exploration of aesthetic restraint and its impact on human focus in an era of digital fragmentation.",
-    instructorName: "Elena Vova",
-    instructorImage: "/assets/images/user-2.png",
-    price: "$1,850",
-    rating: 5.0
-  },
-  {
-    image: "/assets/images/course-3.png",
-    category: "Quantum",
-    tag: "Open Enrollment",
-    title: "Quantum Logic: The Future of Computational Philosophy",
-    description: "Bridging the gap between classical logic and quantum mechanics for business and technology strategy.",
-    instructorName: "Marcus Chen",
-    instructorImage: "/assets/images/user-3.png",
-    price: "$3,200",
-    rating: 4.8
-  },
-  {
-    image: "/assets/images/course-4.png",
-    category: "Ethics",
-    tag: "Seminar Series",
-    title: "The Stoic Executive: Virtue Ethics in Corporate Leadership",
-    description: "Applying ancient wisdom to modern crisis management, decision-making, and organizational culture.",
-    instructorName: "Prof. Arthur H.",
-    instructorImage: "/assets/images/user-1.png",
-    price: "$1,500",
-    rating: 4.9
-  }
-];
+import { COURSES_DATA } from "@/data/courses";
 
 export default function CoursesPage() {
   const { t } = useLanguage();
@@ -61,7 +15,7 @@ export default function CoursesPage() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* Enhanced Mesh Gradients Background (Home Hero Pattern) */}
+      {/* Enhanced Mesh Gradients Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[140px] opacity-80" />
         <div className="absolute bottom-[-15%] right-[-10%] w-[800px] h-[800px] bg-primary/25 rounded-full blur-[160px] opacity-70" />
@@ -98,12 +52,10 @@ export default function CoursesPage() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16">
-          {/* Sidebar */}
           <aside className="lg:w-64 shrink-0">
             <CourseSidebar />
           </aside>
 
-          {/* Course Grid */}
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-20">
               {COURSES_DATA.map((course, idx) => (
@@ -111,7 +63,6 @@ export default function CoursesPage() {
               ))}
             </div>
 
-            {/* Load More Button */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

@@ -1,16 +1,20 @@
 "use client";
 
 import { useLanguage } from "@/providers/LanguageProvider";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 import { 
   TrendingUp,
   Clock,
   ChevronRight,
   ArrowRight
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+
+// Components
+import WelcomeSection from "@/components/dashboard/main/WelcomeSection";
+import DailyProgressWidget from "@/components/dashboard/main/DailyProgressWidget";
+import DashboardCourseCard from "@/components/dashboard/main/DashboardCourseCard";
 
 const TRANSACTIONS = [
   { id: 1, course: "Global Executive Strategy", date: "Oct 24, 2023", amount: "$899.00", status: "Success" },
@@ -27,32 +31,16 @@ export default function DashboardPage() {
       
       {/* Welcome & Daily Progress */}
       <section className="flex flex-col lg:flex-row gap-8 items-start">
-        <div className="flex-1 space-y-4">
-          <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">Executive Dashboard</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-secondary tracking-tighter leading-tight italic">
-            {d.welcome} Alexander.<br />
-            <span className="text-gray-400 not-italic">{d.journey}</span>
-          </h2>
-          <p className="text-sm text-gray-500 font-medium max-w-xl">
-            You've completed 72% of your quarterly goals. Today's focus: Advanced Strategic Leadership and Global Economic Policy.
-          </p>
-        </div>
-        
-        <div className="w-full lg:w-72 bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center gap-4">
-          <div className="relative w-28 h-28">
-            <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" stroke="#F3F4F6" strokeWidth="8" fill="transparent" />
-              <circle cx="50" cy="50" r="40" stroke="#8B5CF6" strokeWidth="8" fill="transparent" strokeDasharray="251.2" strokeDashoffset="70.3" strokeLinecap="round" />
-            </svg>
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-2xl font-black text-secondary">72%</span>
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-black text-secondary uppercase tracking-widest">{d.dailyMasterclass}</p>
-            <p className="text-[10px] text-gray-400 font-bold mt-1 tracking-tight">4.5 / 6 Hours</p>
-          </div>
-        </div>
+        <WelcomeSection 
+          welcome={d.welcome} 
+          journey={d.journey} 
+          focusText="You've completed 72% of your quarterly goals. Today's focus: Advanced Strategic Leadership and Global Economic Policy."
+        />
+        <DailyProgressWidget 
+          percentage={72} 
+          label={d.dailyMasterclass} 
+          sublabel="4.5 / 6 Hours" 
+        />
       </section>
 
       {/* Grid Layout for Widgets */}
@@ -61,7 +49,6 @@ export default function DashboardPage() {
         {/* Left Column: Courses & Table */}
         <div className="lg:col-span-2 space-y-8">
           
-          {/* In Progress */}
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-xl font-bold text-secondary tracking-tight">{d.inProgress}</h3>
@@ -71,47 +58,21 @@ export default function DashboardPage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Course Card 1 */}
-              <div className="p-6 bg-white rounded-4xl border border-gray-100 shadow-sm space-y-6 relative overflow-hidden group">
-                <div className="flex justify-between items-start">
-                  <span className="px-3 py-1 bg-primary/5 text-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Strategy</span>
-                  <TrendingUp className="w-4 h-4 text-primary" />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-bold text-secondary text-lg leading-tight">Advanced Strategic Leadership</h4>
-                  <p className="text-xs text-gray-400 font-medium line-clamp-2 italic">Mastering decision making in high-stakes environments.</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                    <span>Progress</span>
-                    <span>82%</span>
-                  </div>
-                  <div className="h-1.5 bg-gray-50 rounded-full overflow-hidden">
-                    <div className="h-full bg-primary w-[82%] rounded-full" />
-                  </div>
-                </div>
-                <Button className="w-full rounded-xl bg-secondary hover:bg-secondary/90 h-12 font-black text-[11px] uppercase tracking-widest">Resume Lesson</Button>
-              </div>
-
-              {/* Course Card 2 */}
-              <div className="p-6 bg-white rounded-4xl border border-gray-100 shadow-sm space-y-6 opacity-60">
-                <div className="flex justify-between items-start">
-                  <span className="px-3 py-1 bg-gray-50 text-gray-400 text-[10px] font-bold rounded-full uppercase tracking-widest">Economics</span>
-                  <Clock className="w-4 h-4 text-gray-300" />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-bold text-secondary text-lg leading-tight">Global Economic Policy</h4>
-                  <p className="text-xs text-gray-400 font-medium line-clamp-2 italic">Analytical foundations of modern international commerce.</p>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between text-[10px] font-black text-gray-300 uppercase tracking-widest">
-                    <span>Status</span>
-                    <span>Locked</span>
-                  </div>
-                  <div className="h-1.5 bg-gray-50 rounded-full" />
-                </div>
-                <Button variant="outline" className="w-full rounded-xl border-gray-100 h-12 font-black text-[11px] uppercase tracking-widest text-gray-400">View Syllabus</Button>
-              </div>
+              <DashboardCourseCard 
+                category="Strategy"
+                title="Advanced Strategic Leadership"
+                description="Mastering decision making in high-stakes environments."
+                progress={82}
+                icon={TrendingUp}
+              />
+              <DashboardCourseCard 
+                category="Economics"
+                title="Global Economic Policy"
+                description="Analytical foundations of modern international commerce."
+                progress={0}
+                icon={Clock}
+                isLocked
+              />
             </div>
           </div>
 
@@ -150,7 +111,6 @@ export default function DashboardPage() {
         {/* Right Column: Analytics & Extra */}
         <div className="space-y-8">
           
-          {/* Learning Analytics Card */}
           <div className="p-8 bg-white rounded-[2.5rem] border border-gray-100 shadow-sm space-y-8">
             <div className="flex items-center justify-between">
               <h3 className="text-xl font-bold text-secondary tracking-tight">{d.learningAnalytics}</h3>
@@ -187,7 +147,6 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Next Session Card */}
           <div className="p-8 bg-[#FDFCF8] rounded-[2.5rem] border border-[#E9E4D9] shadow-sm space-y-6">
             <h3 className="text-lg font-bold text-secondary tracking-tight">{d.nextSession}</h3>
             <div className="flex items-center gap-4">
@@ -208,15 +167,8 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Event Promotion Card */}
           <div className="group relative rounded-[2.5rem] overflow-hidden aspect-4/3 shadow-xl shadow-secondary/10 cursor-pointer">
-            <Image 
-              src="/assets/images/login-bg.png" 
-              alt="Event" 
-              fill 
-              className="object-cover transition-transform duration-700 group-hover:scale-110" 
-              sizes="(max-width: 1024px) 100vw, 33vw"
-            />
+            <Image src="/assets/images/login-bg.png" alt="Event" fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 1024px) 100vw, 33vw" />
             <div className="absolute inset-0 bg-linear-to-t from-secondary via-secondary/40 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 space-y-3">
               <span className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">Exclusive Event</span>
@@ -228,9 +180,7 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );
