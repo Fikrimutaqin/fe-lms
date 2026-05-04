@@ -119,6 +119,7 @@
     "registerPage": {
       "title": "Bergabung dengan Elit",
       "subtitle": "Mulai perjalanan Anda menuju penguasaan intelektual dan kepemimpinan hari ini.",
+      "imageLabel": "Foto Profil",
       "nameLabel": "Nama Lengkap",
       "emailLabel": "Email Korporat",
       "passwordLabel": "Kata Sandi",
@@ -310,6 +311,7 @@
     "registerPage": {
       "title": "Join the Elite",
       "subtitle": "Start your journey towards intellectual mastery and leadership today.",
+      "imageLabel": "Profile Picture",
       "nameLabel": "Full Name",
       "emailLabel": "Corporate Email",
       "passwordLabel": "Password",

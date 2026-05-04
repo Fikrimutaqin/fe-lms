@@ -16,13 +16,13 @@ export default function LogoutModal() {
   const handleLogout = () => {
     dispatch(logout());
     dispatch(setLogoutModalOpen(false));
-    router.push("/auth/login");
+    router.push("/");
   };
 
   return (
     <AnimatePresence>
       {isLogoutModalOpen && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-9999 flex items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -45,13 +45,13 @@ export default function LogoutModal() {
                 <p className="text-gray-400 font-medium">Are you sure you want to terminate your current session? You will need to log in again to access your dashboard.</p>
               </div>
               <div className="flex flex-col w-full gap-3 pt-4">
-                <Button 
+                <Button
                   onClick={handleLogout}
                   className="h-14 rounded-2xl bg-rose-500 text-white font-black text-xs uppercase tracking-widest hover:bg-rose-600 shadow-xl shadow-rose-500/20 transition-all"
                 >
                   Yes, Sign Out
                 </Button>
-                <Button 
+                <Button
                   variant="ghost"
                   onClick={() => dispatch(setLogoutModalOpen(false))}
                   className="h-14 rounded-2xl text-gray-400 font-bold hover:bg-gray-50 transition-all"
@@ -60,7 +60,7 @@ export default function LogoutModal() {
                 </Button>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => dispatch(setLogoutModalOpen(false))}
               className="absolute top-6 right-6 w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-all"
             >
