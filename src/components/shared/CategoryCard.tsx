@@ -4,9 +4,10 @@ import Link from "next/link";
 interface CategoryCardProps {
   title: string;
   image: string;
+  priority?: boolean;
 }
 
-export default function CategoryCard({ title, image }: CategoryCardProps) {
+export default function CategoryCard({ title, image, priority = false }: CategoryCardProps) {
   return (
     <Link href="/categories" className="flex flex-col gap-6 group cursor-pointer items-center">
       <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-white group-hover:shadow-primary/20 transition-all duration-500 group-hover:-translate-y-3">
@@ -15,6 +16,7 @@ export default function CategoryCard({ title, image }: CategoryCardProps) {
           src={image} 
           alt={title} 
           fill 
+          priority={priority}
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
         />

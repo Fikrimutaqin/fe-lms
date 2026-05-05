@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Search, Zap, Star, ShieldCheck } from "lucide-react";
+import { Search, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";

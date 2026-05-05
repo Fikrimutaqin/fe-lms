@@ -14,7 +14,6 @@ import axiosInstance from "@/lib/axios";
 
 // Components
 import AuthHero from "@/components/auth/AuthHero";
-import SocialLogin from "@/components/auth/SocialLogin";
 
 export default function LoginPage() {
   const { t } = useLanguage();
@@ -139,8 +138,6 @@ export default function LoginPage() {
               )}
             </Button>
           </form>
-
-          <SocialLogin text={l.socialText} />
 
           <div className="text-center">
             <Link href="/register" className="text-xs font-bold text-gray-400 hover:text-primary transition-colors italic">

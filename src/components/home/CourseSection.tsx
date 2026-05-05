@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CourseCard from "../shared/CourseCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { SearchX, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
