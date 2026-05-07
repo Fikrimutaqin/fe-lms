@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import CourseCard from "../shared/CourseCard";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
-import { SearchX, ArrowRight } from "lucide-react";
+import { SearchX, ArrowRight, Sparkles, Filter, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/providers/LanguageProvider";
 import Link from "next/link";
@@ -16,104 +16,148 @@ export default function CourseSection() {
   const t = translations.course;
 
   return (
-    <section className="w-full py-24 bg-white">
-      <div className="container mx-auto px-4 space-y-12 md:space-y-16">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section className="w-full py-24 bg-white relative overflow-hidden font-sans">
+      <div className="container mx-auto px-4 relative z-10">
+
+        {/* Editorial Header */}
+        <div className="max-w-4xl space-y-6 mb-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
+            whileInView={{ opacity: 1, x: 2 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-secondary/5 border border-secondary/5"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-secondary tracking-tight">
-              {t.titleStart}<span className="text-primary italic">{t.titleHighlight}</span>
-            </h2>
-            <p className="text-gray-400 text-base md:text-lg max-w-xl font-medium">
-              {t.subtitle}
-            </p>
+            <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
+            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-secondary">Curated Learning</span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:block"
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black text-secondary tracking-tighter leading-none"
           >
-            <Link href="/courses" className="text-sm font-bold text-primary flex items-center gap-2 group border-b border-primary/20 pb-1 hover:border-primary transition-all">
-              {t.viewAll}
-              <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
-              </div>
-            </Link>
-          </motion.div>
+            {t.titleStart} <br />
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-indigo-600 italic pr-2">
+              {t.titleHighlight}
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-base md:text-lg font-medium max-w-xl"
+          >
+            {t.subtitle}
+          </motion.p>
         </div>
 
-        {/* Tabs & Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full overflow-hidden"
-        >
-          <Tabs defaultValue="python" onValueChange={setActiveTab} className="w-full">
-            <div className="overflow-x-auto pb-2 scrollbar-hide">
-              <TabsList className="bg-gray-100/50 p-1.5 gap-1 inline-flex h-auto rounded-2xl border border-gray-100 mb-8 md:mb-12 min-w-max">
-                {COURSE_CATEGORIES.map((tab) => (
-                  <TabsTrigger
-                    key={tab}
-                    value={tab.toLowerCase().replace(' ', '-')}
-                    className="px-4 md:px-6 py-2 md:py-2.5 data-active:bg-white data-active:text-secondary data-active:shadow-sm rounded-xl font-bold text-gray-400 hover:text-secondary transition-all text-xs md:text-sm shadow-none border-none whitespace-nowrap"
-                  >
-                    {tab}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+        {/* Side-by-Side Layout */}
+        <div className="flex flex-col lg:flex-row gap-12 xl:gap-24 items-start">
+
+          {/* Custom Sidebar Navigation */}
+          <aside className="w-full lg:w-[280px] lg:sticky lg:top-32 flex flex-col gap-10">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5 text-secondary">
+                  <Filter className="w-4 h-4" />
+                  <span className="font-black text-[10px] uppercase tracking-widest">Categories</span>
+                </div>
+                <Link href="/courses" className="text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">
+                  {t.viewAll}
+                </Link>
+              </div>
+              <div className="h-px w-full bg-gray-100" />
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                {COURSE_DATA[activeTab]?.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {COURSE_DATA[activeTab].map((course, idx) => (
-                      <CourseCard key={idx} {...course} />
-                    ))}
-                  </div>
-                ) : (
-                  /* Elegant Empty State */
-                  <div className="py-20 md:py-32 flex flex-col items-center text-center space-y-6 bg-gray-50/50 rounded-[40px] border border-dashed border-gray-200">
-                    <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100">
-                      <SearchX className="w-10 h-10 text-gray-300" />
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="text-2xl font-bold text-secondary">{t.emptyStateTitle}</h3>
-                      <p className="text-gray-400 max-w-xs mx-auto font-medium">
-                        {t.emptyStateSubtitle}
-                      </p>
-                    </div>
-                    <Button
-                      variant="outline"
-                      onClick={() => setActiveTab("python")}
-                      className="rounded-full border-gray-200 font-bold text-secondary gap-2 hover:bg-white hover:shadow-sm transition-all"
-                    >
-                      {t.checkOtherCategory}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </Tabs>
-        </motion.div>
+            {/* Custom Category List (Replaces TabsList for better control) */}
+            <nav className="flex flex-col gap-2 w-full">
+              {COURSE_CATEGORIES.map((cat) => {
+                const value = cat.toLowerCase().replace(' ', '-');
+                const isActive = activeTab === value;
+
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveTab(value)}
+                    className={`group w-full flex items-center justify-between px-6 py-4 rounded-2xl transition-all duration-300 text-sm font-bold ${isActive
+                      ? "bg-secondary text-white shadow-xl shadow-secondary/10"
+                      : "bg-transparent text-gray-400 hover:text-secondary hover:bg-gray-50"
+                      }`}
+                  >
+                    <span className="flex items-center gap-3">
+                      {cat}
+                    </span>
+                    <ChevronRight className={`w-4 h-4 transition-all ${isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                      }`} />
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* Premium Sidebar Card */}
+            <div className="p-8 hidden lg:block rounded-4xl bg-gray-50 border border-gray-100 relative overflow-hidden group cursor-pointer">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full -mr-10 -mt-10 blur-2xl group-hover:bg-primary/20 transition-colors" />
+              <div className="relative z-10 space-y-4">
+                <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-gray-100">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                </div>
+                <div className="space-y-2">
+                  <p className="font-black text-[10px] uppercase tracking-widest text-secondary">Elevate Skills</p>
+                  <p className="text-[11px] text-gray-400 font-medium leading-relaxed">
+                    Access our most rigorous technical curricula and world-class mentors.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* Main Content Grid */}
+          <div className="flex-1 w-full min-h-[600px]">
+            <Tabs value={activeTab} className="w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4, ease: "circOut" }}
+                >
+                  <TabsContent value={activeTab} className="m-0 border-none p-0 focus-visible:ring-0">
+                    {COURSE_DATA[activeTab]?.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-16">
+                        {COURSE_DATA[activeTab].map((course, idx) => (
+                          <CourseCard key={idx} {...course} />
+                        ))}
+                      </div>
+                    ) : (
+                      /* Minimal Empty State */
+                      <div className="py-32 flex flex-col items-center text-center space-y-8 rounded-[3rem] bg-gray-50 border border-dashed border-gray-200">
+                        <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-gray-100">
+                          <SearchX className="w-8 h-8 text-gray-300" />
+                        </div>
+                        <div className="space-y-2 px-6">
+                          <h3 className="text-2xl font-black text-secondary tracking-tight">{t.emptyStateTitle}</h3>
+                          <p className="text-gray-400 max-w-xs mx-auto font-medium text-xs leading-relaxed">
+                            {t.emptyStateSubtitle}
+                          </p>
+                        </div>
+                        <Button
+                          variant="outline"
+                          onClick={() => setActiveTab("python")}
+                          className="h-11 px-8 rounded-xl border-gray-200 font-black text-[10px] uppercase tracking-widest text-secondary"
+                        >
+                          {t.checkOtherCategory}
+                        </Button>
+                      </div>
+                    )}
+                  </TabsContent>
+                </motion.div>
+              </AnimatePresence>
+            </Tabs>
+          </div>
+
+        </div>
       </div>
     </section>
   );

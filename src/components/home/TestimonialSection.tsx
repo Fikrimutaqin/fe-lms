@@ -1,95 +1,201 @@
 "use client";
 
 import Image from "next/image";
-import { Star, Quote, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { Star, Quote, Sparkles, ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { TESTIMONIAL_DATA } from "@/data/home";
+import { useState, useRef, useEffect } from "react";
 
 export default function TestimonialSection() {
   const { t: translations } = useLanguage();
   const t = translations.testimonial;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [constraints, setConstraints] = useState({ left: 0, right: 0 });
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      setConstraints({
+        left: -(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth),
+        right: 0,
+      });
+    }
+  }, []);
+
+  const next = () => {
+    if (currentIndex < TESTIMONIAL_DATA.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
   return (
-    <section className="w-full py-24 md:py-40 bg-[#FDFDFD] overflow-hidden relative">
-      {/* Decorative Blur */}
-      <div className="absolute top-1/2 left-[-5%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <section className="w-full py-24 md:py-40 bg-[#FDFDFD] overflow-hidden relative font-sans">
+      {/* Premium Background Accents */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-primary/5 to-transparent pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-6 mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary"
-          >
-            <Sparkles className="w-6 h-6" />
-          </motion.div>
-          <div className="space-y-4">
+        
+        {/* Editorial Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-20">
+          <div className="max-w-3xl space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-white border border-secondary"
+            >
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-widest text-white">Member Success</span>
+            </motion.div>
+            
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary tracking-tighter italic"
+              className="text-5xl md:text-7xl font-black text-secondary tracking-tighter leading-none italic"
             >
               {t.title}
             </motion.h2>
+            
             <motion.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="text-gray-400 max-w-lg mx-auto font-medium text-lg"
+              className="text-gray-500 max-w-xl font-medium text-lg md:text-xl leading-relaxed"
             >
-              Real growth stories from our community of 25k+ high-achievers.
+              {t.subtitle}
             </motion.p>
           </div>
+
+          {/* Custom Navigation Controls (Hidden if data <= 3) */}
+          {TESTIMONIAL_DATA.length > 3 && (
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={prev}
+                disabled={currentIndex === 0}
+                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-secondary transition-all"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={next}
+                disabled={currentIndex === TESTIMONIAL_DATA.length - 1}
+                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-secondary transition-all"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </div>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {TESTIMONIAL_DATA.map((testi, idx) => (
-            <motion.div
-              key={testi.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="relative p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700 group overflow-hidden"
-            >
-              {/* Card Texture */}
-              <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+        {/* Carousel / Grid Logic */}
+        {TESTIMONIAL_DATA.length > 3 ? (
+          <>
+            {/* Swipable Carousel Container */}
+            <div className="relative overflow-visible cursor-grab active:cursor-grabbing">
+              <motion.div 
+                ref={carouselRef}
+                drag="x"
+                dragConstraints={constraints}
+                animate={{ x: -currentIndex * (typeof window !== 'undefined' && window.innerWidth < 1024 ? 320 : 440) }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="flex gap-8 md:gap-10"
+              >
+                {TESTIMONIAL_DATA.map((testi, idx) => (
+                  <motion.div
+                    key={testi.id}
+                    className="relative min-w-[300px] md:min-w-[400px] p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700 group overflow-hidden"
+                  >
+                    {/* Card Texture */}
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
-              <Quote className="absolute -top-4 -right-4 w-32 h-32 text-gray-50 group-hover:text-primary/5 transition-colors duration-700 -rotate-12" />
-              
-              <div className="flex text-amber-400 mb-8 relative z-10">
-                {[...Array(testi.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
+                    <Quote className="absolute -top-4 -right-4 w-24 h-24 text-gray-50 group-hover:text-primary/5 transition-colors duration-700 -rotate-12" />
+                    
+                    <div className="flex text-amber-400 mb-8 relative z-10">
+                      {[...Array(testi.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+
+                    <p className="text-secondary font-bold text-lg leading-relaxed mb-12 relative z-10 italic">
+                      "{testi.content}"
+                    </p>
+
+                    <div className="flex items-center justify-between pt-8 border-t border-gray-50 relative z-10">
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-4 border-gray-50 shadow-sm group-hover:scale-110 transition-transform duration-500 bg-gray-100">
+                          <Image src={testi.avatar} alt={testi.name} fill className="object-cover" sizes="56px" />
+                        </div>
+                        <div>
+                          <h4 className="font-black text-secondary text-sm tracking-tight">{testi.name}</h4>
+                          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{testi.role}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="px-3 py-1 bg-gray-50 rounded-lg text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-primary transition-colors">
+                        {testi.company}
+                      </div>
+                    </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
+            </div>
 
-              <p className="text-secondary font-bold text-lg leading-[1.6] mb-12 relative z-10 line-clamp-4 group-hover:line-clamp-none transition-all duration-500 italic">
-                "{testi.content}"
-              </p>
-
-              <div className="flex items-center justify-between pt-8 border-t border-gray-50 relative z-10">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-4 border-gray-50 shadow-sm group-hover:scale-110 transition-transform duration-500">
-                    <Image src={testi.avatar} alt={testi.name} fill className="object-cover" sizes="56px" />
+            {/* Progress Bar Indicators */}
+            <div className="mt-20 flex justify-center gap-2">
+              {TESTIMONIAL_DATA.map((_, i) => (
+                <div 
+                  key={i} 
+                  onClick={() => setCurrentIndex(i)}
+                  className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
+                    i === currentIndex ? "w-12 bg-primary" : "w-4 bg-gray-200 hover:bg-gray-300"
+                  }`} 
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          /* Static Grid for small data counts (Desktop) */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {TESTIMONIAL_DATA.map((testi) => (
+              <div
+                key={testi.id}
+                className="relative p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700 group overflow-hidden"
+              >
+                <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
+                <Quote className="absolute -top-4 -right-4 w-24 h-24 text-gray-50 group-hover:text-primary/5 transition-colors duration-700 -rotate-12" />
+                <div className="flex text-amber-400 mb-8 relative z-10">
+                  {[...Array(testi.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <p className="text-secondary font-bold text-lg leading-relaxed mb-12 relative z-10 italic">
+                  "{testi.content}"
+                </p>
+                <div className="flex items-center justify-between pt-8 border-t border-gray-50 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-4 border-gray-50 shadow-sm group-hover:scale-110 transition-transform duration-500 bg-gray-100">
+                      <Image src={testi.avatar} alt={testi.name} fill className="object-cover" sizes="56px" />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-secondary text-sm tracking-tight">{testi.name}</h4>
+                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{testi.role}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-black text-secondary text-sm tracking-tight">{testi.name}</h4>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{testi.role}</p>
+                  <div className="px-3 py-1 bg-gray-50 rounded-lg text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-primary transition-colors">
+                    {testi.company}
                   </div>
                 </div>
-                
-                {/* Simulated Company Badge */}
-                <div className="px-3 py-1 bg-gray-50 rounded-lg text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-primary transition-colors">
-                  {testi.company}
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

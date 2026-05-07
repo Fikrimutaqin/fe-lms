@@ -107,5 +107,14 @@ export const TESTIMONIAL_DATA = [
     avatar: "/assets/images/user-3.png",
     company: "BCA",
     rating: 5
+  },
+  {
+    id: 4,
+    name: "David Wijaya",
+    role: "Data Analyst at BCA",
+    content: "Analisis data jadi jauh lebih cepet setelah ikut kelas Python for Finance. Instrukturnya bener-bener ahli di bidangnya. Materi SQL & Pandas-nya gila, kepake banget di kerjaan harian.",
+    avatar: "/assets/images/user-3.png",
+    company: "BCA",
+    rating: 5
   }
 ];

@@ -16,6 +16,17 @@
       "title": "Kategori Teratas",
       "subtitle": "Temukan topik populer dan mulai belajar dari para ahli di bidangnya."
     },
+    "about": {
+      "badge": "Evolusi Digital",
+      "title": "Membentuk Masa Depan Melalui Teknologi.",
+      "subtitle": "NexLearn bukan sekadar platform kursus. Kami adalah ekosistem yang dirancang untuk mempercepat pertumbuhan intelektual dan karier Anda di era AI.",
+      "stat1Number": "500+",
+      "stat1Label": "Kurikulum Elit",
+      "stat2Number": "25k+",
+      "stat2Label": "Alumni Global",
+      "stat3Number": "98%",
+      "stat3Label": "Kepuasan Member"
+    },
     "course": {
       "titleStart": "Apa yang akan dipelajari ",
       "titleHighlight": "selanjutnya?",
@@ -189,6 +200,30 @@
         "amount": "Jumlah",
         "status": "Status"
       }
+    },
+    "learningFlow": {
+      "badge": "Protokol",
+      "title": "Dirancang untuk Penguasaan.",
+      "subtitle": "Alur belajar yang dirancang dengan presisi untuk mempercepat evolusi Anda menjadi profesional kelas dunia.",
+      "steps": [
+        {
+          "title": "Intelligence Discovery",
+          "description": "Mesin neural kami memindai profil Anda untuk merancang jalur berkecepatan tinggi yang disesuaikan dengan tujuan karier Anda."
+        },
+        {
+          "title": "Deep Immersion",
+          "description": "Terlibat dengan modul adaptif yang mengkalibrasi tingkat kesulitan berdasarkan performa kognitif Anda secara real-time."
+        },
+        {
+          "title": "Autonomous Practice",
+          "description": "Kuasai logika kompleks dalam sandbox bertenaga AI dengan umpan balik arsitektur real-time dan dukungan rekan."
+        },
+        {
+          "title": "Verified Mastery",
+          "description": "Amankan pencapaian Anda di blockchain dan dapatkan akses ke jaringan eksklusif pemimpin teknologi berdampak tinggi."
+        }
+      ],
+      "cta": "Mulai Evolusi Anda"
     }
   },
   "en": {
@@ -207,6 +242,17 @@
     "category": {
       "title": "Top Categories",
       "subtitle": "Discover popular topics and start learning from experts in their fields."
+    },
+    "about": {
+      "badge": "Digital Evolution",
+      "title": "Architecting the Future Through Technology.",
+      "subtitle": "NexLearn is more than a course platform. We are an ecosystem engineered to accelerate your intellectual and career growth in the AI era.",
+      "stat1Number": "500+",
+      "stat1Label": "Elite Curricula",
+      "stat2Number": "25k+",
+      "stat2Label": "Global Alumni",
+      "stat3Number": "98%",
+      "stat3Label": "Member Satisfaction"
     },
     "course": {
       "titleStart": "What will you learn ",
@@ -381,6 +427,30 @@
         "amount": "Amount",
         "status": "Status"
       }
+    },
+    "learningFlow": {
+      "badge": "The Protocol",
+      "title": "Engineered for Mastery.",
+      "subtitle": "A precision-engineered learning alur designed to accelerate your evolution into a world-class professional.",
+      "steps": [
+        {
+          "title": "Intelligence Discovery",
+          "description": "Our neural engine scans your profile to architect a high-velocity path tailored to your specific career goals."
+        },
+        {
+          "title": "Deep Immersion",
+          "description": "Engage with adaptive modules that calibrate their difficulty based on your real-time cognitive performance."
+        },
+        {
+          "title": "Autonomous Practice",
+          "description": "Master complex logic in an AI-powered sandbox with real-time architectural feedback and peer support."
+        },
+        {
+          "title": "Verified Mastery",
+          "description": "Secure your legacy on the blockchain and gain entry into an exclusive network of high-impact tech leaders."
+        }
+      ],
+      "cta": "Start Your Evolution"
     }
   }
 }
