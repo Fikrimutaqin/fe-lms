@@ -54,7 +54,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(slideNext, 6000);
+    const timer = setInterval(slideNext, 10000);
     return () => clearInterval(timer);
   }, [slideNext]);
 
@@ -190,7 +190,7 @@ export default function Hero() {
         </button>
         <button
           onClick={slideNext}
-          className="w-14 h-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-black hover:bg-primary transition-all pointer-events-auto active:scale-90"
+          className="w-14 h-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-all pointer-events-auto active:scale-90"
         >
           <ChevronRight className="w-6 h-6" />
         </button>

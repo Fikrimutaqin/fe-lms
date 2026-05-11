@@ -93,7 +93,7 @@ export default function AboutSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-gray-200 border border-gray-100 flex flex-col justify-center items-center text-center space-y-3 relative z-10"
+              className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-gray-200 border border-gray-100 flex flex-col justify-center items-center text-center space-y-3 relative z-10 mb-2"
             >
               <p className="text-5xl font-black text-secondary tracking-tighter">{t.stat1Number}</p>
               <p className="text-[10px] font-black text-primary uppercase tracking-widest">{t.stat1Label}</p>
@@ -103,7 +103,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 }}
-              className="bg-secondary p-10 rounded-[3rem] shadow-2xl shadow-secondary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-12"
+              className="bg-secondary p-10 rounded-[3rem] shadow-2xl shadow-secondary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-12 mb-2"
             >
               <p className="text-5xl font-black text-white tracking-tighter">{t.stat2Number}</p>
               <p className="text-[10px] font-black text-primary uppercase tracking-widest">{t.stat2Label}</p>

@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, Video, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useLanguage } from "@/providers/LanguageProvider";
-import { INSTRUCTOR_DATA } from "@/data/home";
+// import { INSTRUCTOR_DATA } from "@/data/home";
+import axiosInstance from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function InstructorSection() {
   const { t: translations } = useLanguage();
@@ -14,14 +16,37 @@ export default function InstructorSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
+  interface Instructor {
+    id: string;
+    firstName: string;
+    lastName: string;
+    avatarUrl: string;
+    title: string;
+    bio: string;
+    rating: number;
+    reviewsCount: number;
+    studentsCount: number;
+    coursesCount: number;
+  }
+
+  const { data: queryData, isLoading } = useQuery({
+    queryKey: ['instructors'],
+    queryFn: async () => {
+      const response = await axiosInstance.get('/users/instructors');
+      return response.data.data;
+    },
+  });
+
+  const instructors = Array.isArray(queryData) ? queryData : [];
+
   const slideNext = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % INSTRUCTOR_DATA.length);
+    setCurrentIndex((prev) => (prev + 1) % (instructors.length || 1));
   };
 
   const slidePrev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + INSTRUCTOR_DATA.length) % INSTRUCTOR_DATA.length);
+    setCurrentIndex((prev) => (prev - 1 + (instructors.length || 1)) % (instructors.length || 1));
   };
 
   const handleDragEnd = (event: any, info: PanInfo) => {
@@ -53,7 +78,31 @@ export default function InstructorSection() {
     })
   };
 
-  const currentInstructor = INSTRUCTOR_DATA[currentIndex];
+  const currentInstructor = instructors[currentIndex];
+
+  if (isLoading) {
+    return (
+      <section className="w-full py-32 md:py-48 bg-white overflow-hidden relative animate-pulse">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
+            <div className="bg-gray-100 rounded-[4rem] h-[600px] w-full" />
+            <div className="space-y-10">
+              <div className="h-8 bg-gray-100 rounded w-1/4" />
+              <div className="h-24 bg-gray-100 rounded w-3/4" />
+              <div className="h-20 bg-gray-100 rounded w-1/2" />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!currentInstructor) {
+    return null;
+  }
+
+  const fullName = `${currentInstructor.firstName} ${currentInstructor.lastName}`;
+  const formattedStudents = new Intl.NumberFormat().format(currentInstructor.studentsCount);
 
   return (
     <section className="w-full py-32 md:py-48 bg-white overflow-hidden relative font-sans">
@@ -63,7 +112,7 @@ export default function InstructorSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
-          
+
           {/* Swipable Visual Side (Left) */}
           <div className="relative order-2 lg:order-1 h-[500px] md:h-[650px] cursor-grab active:cursor-grabbing">
             <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -86,26 +135,26 @@ export default function InstructorSection() {
               >
                 <div className="relative h-full w-full rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-2xl shadow-gray-200 border-8 border-white group select-none">
                   <Image
-                    src={currentInstructor.image}
-                    alt={currentInstructor.name}
+                    src={currentInstructor.avatarUrl}
+                    alt={currentInstructor.firstName + " " + currentInstructor.lastName}
                     fill
                     className="object-cover object-top pointer-events-none"
                     sizes="(max-width: 1024px) 100vw, 600px"
                   />
-                  
+
                   {/* Overlay Info */}
                   <div className="absolute inset-0 bg-linear-to-t from-secondary/90 via-secondary/20 to-transparent pointer-events-none" />
                   <div className="absolute bottom-10 left-8 right-8 md:bottom-12 md:left-12 md:right-12 text-white space-y-3 pointer-events-none">
                     <div className="flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full w-fit">
-                        <CheckCircle2 className="w-3 h-3 text-primary" />
-                        <span className="text-[9px] font-black uppercase tracking-widest text-white">Verified Global Mentor</span>
+                      <CheckCircle2 className="w-3 h-3 text-primary" />
+                      <span className="text-[9px] font-black uppercase tracking-widest text-white">Verified Global Mentor</span>
                     </div>
                     <div className="space-y-1">
-                      <h3 className="text-2xl md:text-4xl font-black tracking-tighter italic text-white">{currentInstructor.name}</h3>
-                      <p className="text-[10px] font-medium text-white/60 tracking-widest uppercase">{currentInstructor.role}</p>
+                      <h3 className="text-2xl md:text-4xl font-black tracking-tighter italic text-white">{fullName}</h3>
+                      <p className="text-[10px] font-medium text-white/60 tracking-widest uppercase">{currentInstructor.title}</p>
                     </div>
                     <p className="text-[13px] text-white/80 leading-relaxed line-clamp-2 italic font-medium pt-1">
-                        "{currentInstructor.bio}"
+                      "{currentInstructor.bio}"
                     </p>
                   </div>
                 </div>
@@ -125,7 +174,7 @@ export default function InstructorSection() {
                     ))}
                   </div>
                   <div>
-                    <p className="text-2xl md:text-3xl font-black leading-none text-white">{currentInstructor.students}</p>
+                    <p className="text-2xl md:text-3xl font-black leading-none text-white">{formattedStudents}</p>
                     <p className="text-[9px] font-bold text-white/40 uppercase tracking-widest mt-1">Guided Students</p>
                   </div>
                 </motion.div>
@@ -147,18 +196,17 @@ export default function InstructorSection() {
 
             {/* Pagination Dots */}
             <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-2.5">
-                {INSTRUCTOR_DATA.map((_, i) => (
-                    <div 
-                        key={i} 
-                        onClick={() => {
-                            setDirection(i > currentIndex ? 1 : -1);
-                            setCurrentIndex(i);
-                        }}
-                        className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
-                            i === currentIndex ? "w-10 bg-primary" : "w-3 bg-gray-200 hover:bg-gray-300"
-                        }`}
-                    />
-                ))}
+              {instructors.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => {
+                    setDirection(i > currentIndex ? 1 : -1);
+                    setCurrentIndex(i);
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === currentIndex ? "w-10 bg-primary" : "w-3 bg-gray-200 hover:bg-gray-300"
+                    }`}
+                />
+              ))}
             </div>
           </div>
 
@@ -177,11 +225,11 @@ export default function InstructorSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-secondary leading-[1] md:leading-[0.95] tracking-tighter"
+                className="text-4xl md:text-6xl lg:text-7xl font-black text-secondary leading-none md:leading-[0.95] tracking-tighter"
               >
                 {t.titleLine1}<br />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-indigo-600 italic pb-2 inline-block">
-                    {t.titleLine2}
+                  {t.titleLine2}
                 </span>
               </motion.h2>
 
@@ -220,10 +268,10 @@ export default function InstructorSection() {
               ))}
             </div>
 
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="pt-6 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center gap-8"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="pt-6 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center gap-8"
             >
               <Button size="lg" className="h-14 md:h-16 px-10 bg-secondary hover:bg-secondary/90 text-white font-black rounded-2xl shadow-2xl shadow-secondary/20 gap-3 text-base md:text-lg transition-all group overflow-hidden relative">
                 <span className="relative z-10">{t.ctaButton}</span>

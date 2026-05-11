@@ -6,6 +6,8 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { useLanguage } from "@/providers/LanguageProvider";
 import { TESTIMONIAL_DATA } from "@/data/home";
 import { useState, useRef, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "@/lib/axios";
 
 export default function TestimonialSection() {
   const { t: translations } = useLanguage();
@@ -13,6 +15,26 @@ export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [constraints, setConstraints] = useState({ left: 0, right: 0 });
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  interface Testimonies {
+    id: string;
+    name: string;
+    avatar: string;
+    content: string;
+    rating: number;
+    createdAt: string;
+  }
+
+  // Tanstack Query
+  const { data: queryData, isLoading } = useQuery({
+    queryKey: ['testimonies'],
+    queryFn: async () => {
+      const response = await axiosInstance.get('/testimonies');
+      return response.data.data;
+    },
+  });
+
+  const testimonies = Array.isArray(queryData) ? queryData : [];
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -24,7 +46,7 @@ export default function TestimonialSection() {
   }, []);
 
   const next = () => {
-    if (currentIndex < TESTIMONIAL_DATA.length - 1) {
+    if (currentIndex < testimonies.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -42,11 +64,11 @@ export default function TestimonialSection() {
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        
+
         {/* Editorial Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 mb-20">
           <div className="max-w-3xl space-y-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-white border border-secondary"
@@ -54,16 +76,16 @@ export default function TestimonialSection() {
               <Sparkles className="w-4 h-4 text-primary animate-pulse" />
               <span className="text-[10px] font-black uppercase tracking-widest text-white">Member Success</span>
             </motion.div>
-            
-            <motion.h2 
+
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-7xl font-black text-secondary tracking-tighter leading-none italic"
             >
               {t.title}
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -74,18 +96,18 @@ export default function TestimonialSection() {
           </div>
 
           {/* Custom Navigation Controls (Hidden if data <= 3) */}
-          {TESTIMONIAL_DATA.length > 3 && (
+          {testimonies.length > 3 && (
             <div className="flex items-center gap-4">
-              <button 
+              <button
                 onClick={prev}
                 disabled={currentIndex === 0}
                 className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-secondary transition-all"
               >
                 <ArrowLeft className="w-6 h-6" />
               </button>
-              <button 
+              <button
                 onClick={next}
-                disabled={currentIndex === TESTIMONIAL_DATA.length - 1}
+                disabled={currentIndex === testimonies.length - 1}
                 className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white disabled:opacity-20 disabled:hover:bg-transparent disabled:hover:text-secondary transition-all"
               >
                 <ArrowRight className="w-6 h-6" />
@@ -95,11 +117,33 @@ export default function TestimonialSection() {
         </div>
 
         {/* Carousel / Grid Logic */}
-        {TESTIMONIAL_DATA.length > 3 ? (
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="min-h-[300px] bg-white rounded-[3rem] border border-gray-100 p-10 animate-pulse space-y-6">
+                <div className="flex gap-2">
+                  {[...Array(5)].map((_, j) => <div key={j} className="w-4 h-4 bg-gray-100 rounded-full" />)}
+                </div>
+                <div className="space-y-3">
+                  <div className="h-4 bg-gray-100 rounded w-full" />
+                  <div className="h-4 bg-gray-100 rounded w-5/6" />
+                </div>
+                <div className="flex items-center gap-4 pt-10 border-t border-gray-50">
+                  <div className="w-14 h-14 rounded-2xl bg-gray-100" />
+                  <div className="h-4 bg-gray-100 rounded w-1/3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : testimonies.length === 0 ? (
+          <div className="text-center py-20 text-gray-400 font-medium italic">
+            No testimonials found.
+          </div>
+        ) : testimonies.length > 3 ? (
           <>
             {/* Swipable Carousel Container */}
             <div className="relative overflow-visible cursor-grab active:cursor-grabbing">
-              <motion.div 
+              <motion.div
                 ref={carouselRef}
                 drag="x"
                 dragConstraints={constraints}
@@ -107,7 +151,7 @@ export default function TestimonialSection() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="flex gap-8 md:gap-10"
               >
-                {TESTIMONIAL_DATA.map((testi, idx) => (
+                {testimonies.map((testi: Testimonies, idx: number) => (
                   <motion.div
                     key={testi.id}
                     className="relative min-w-[300px] md:min-w-[400px] p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700 group overflow-hidden"
@@ -116,7 +160,7 @@ export default function TestimonialSection() {
                     <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
                     <Quote className="absolute -top-4 -right-4 w-24 h-24 text-gray-50 group-hover:text-primary/5 transition-colors duration-700 -rotate-12" />
-                    
+
                     <div className="flex text-amber-400 mb-8 relative z-10">
                       {[...Array(testi.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
@@ -134,12 +178,7 @@ export default function TestimonialSection() {
                         </div>
                         <div>
                           <h4 className="font-black text-secondary text-sm tracking-tight">{testi.name}</h4>
-                          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{testi.role}</p>
                         </div>
-                      </div>
-                      
-                      <div className="px-3 py-1 bg-gray-50 rounded-lg text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-primary transition-colors">
-                        {testi.company}
                       </div>
                     </div>
                   </motion.div>
@@ -149,13 +188,12 @@ export default function TestimonialSection() {
 
             {/* Progress Bar Indicators */}
             <div className="mt-20 flex justify-center gap-2">
-              {TESTIMONIAL_DATA.map((_, i) => (
-                <div 
-                  key={i} 
+              {testimonies.map((_, i) => (
+                <div
+                  key={i}
                   onClick={() => setCurrentIndex(i)}
-                  className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
-                    i === currentIndex ? "w-12 bg-primary" : "w-4 bg-gray-200 hover:bg-gray-300"
-                  }`} 
+                  className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${i === currentIndex ? "w-12 bg-primary" : "w-4 bg-gray-200 hover:bg-gray-300"
+                    }`}
                 />
               ))}
             </div>
@@ -163,7 +201,7 @@ export default function TestimonialSection() {
         ) : (
           /* Static Grid for small data counts (Desktop) */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {TESTIMONIAL_DATA.map((testi) => (
+            {testimonies.map((testi: Testimonies) => (
               <div
                 key={testi.id}
                 className="relative p-10 bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700 group overflow-hidden"
@@ -185,11 +223,7 @@ export default function TestimonialSection() {
                     </div>
                     <div>
                       <h4 className="font-black text-secondary text-sm tracking-tight">{testi.name}</h4>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">{testi.role}</p>
                     </div>
-                  </div>
-                  <div className="px-3 py-1 bg-gray-50 rounded-lg text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-primary transition-colors">
-                    {testi.company}
                   </div>
                 </div>
               </div>

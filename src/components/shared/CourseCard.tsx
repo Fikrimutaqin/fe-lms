@@ -7,13 +7,20 @@ interface CourseCardProps {
   title: string;
   instructor: string;
   rating: number;
-  reviews: string;
-  price: string;
+  reviews: number;
+  price: number;
   image: string;
   badge?: string;
 }
 
 export default function CourseCard({ title, instructor, rating, reviews, price, image, badge }: CourseCardProps) {
+  const formattedPrice = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0
+  }).format(price);
+
+  const formattedReviews = new Intl.NumberFormat('id-ID').format(reviews);
   return (
     <Link href="/courses/1" className="group block relative h-full">
       <div className="flex flex-col h-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
@@ -59,10 +66,10 @@ export default function CourseCard({ title, instructor, rating, reviews, price, 
             <div className="flex items-center justify-between pt-2 border-t border-white/10">
               <div className="flex items-center gap-1.5 text-white/60">
                 <Star className="h-3.5 w-3.5 fill-amber-300 text-amber-300" />
-                <span className="text-xs font-black text-white">{rating.toFixed(1)}</span>
-                <span className="text-[10px] font-medium opacity-60 uppercase tracking-tighter">({reviews})</span>
+                <span className="text-xs font-black text-white">{rating}</span>
+                <span className="text-[10px] font-medium opacity-60 uppercase tracking-tighter">({formattedReviews})</span>
               </div>
-              <span className="text-xl font-black text-white">{price}</span>
+              <span className="text-xl font-black text-white">{formattedPrice}</span>
             </div>
           </div>
         </div>

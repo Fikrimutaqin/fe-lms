@@ -1,6 +1,7 @@
 "use client";
 
 import CategoryCard from "../shared/CategoryCard";
+import CategoryCardSkeleton from "../shared/CategoryCardSkeleton";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { useQuery } from "@tanstack/react-query";
@@ -16,16 +17,19 @@ export default function CategorySection() {
     image: string;
     slug: string;
     description: string;
+    courseSold?: number;
   }
 
   // Tanstack Query
-  const { data: categories = [] } = useQuery({
+  const { data: queryData, isLoading } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
       const response = await axiosInstance.get('/categories/top');
       return response.data.data;
     },
   });
+
+  const categories = Array.isArray(queryData) ? queryData : [];
 
   return (
     <section className="w-full py-24 bg-gray-50/50">
@@ -45,28 +49,36 @@ export default function CategorySection() {
         </motion.div>
 
 
-        {categories.length === 0 ? (
+        {isLoading ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {[...Array(4)].map((_, idx) => (
+              <CategoryCardSkeleton key={idx} />
+            ))}
+          </div>
+        ) : categories.length === 0 ? (
           <div className="w-full flex items-center justify-center">
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
               <p className="text-gray-500 max-w-lg text-center w-full">No Category Found</p>
             </motion.div>
           </div>
-        ) : <>
+        ) : (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
             {categories.map((cat: Categories, idx: number) => (
               <motion.div
-                key={idx}
+                key={cat.id || idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <CategoryCard title={cat.name} image={cat.image} priority={idx < 4} />
+                <CategoryCard title={cat.name} image={cat.image} sold={cat.courseSold} priority={idx < 4} />
               </motion.div>
             ))}
           </div>
-        </>
-        }
+        )}
       </div>
     </section >
   );
