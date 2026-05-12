@@ -73,8 +73,7 @@ export default function TestimonialSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-white border border-secondary"
             >
-              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-white">Member Success</span>
+              <span className="text-[10px] font-black uppercase tracking-wider text-white">Member Success</span>
             </motion.div>
 
             <motion.h2
@@ -89,7 +88,7 @@ export default function TestimonialSection() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-gray-500 max-w-xl font-medium text-lg md:text-xl leading-relaxed"
+              className="text-gray-500 max-w-xl font-medium text-base md:text-xl leading-relaxed"
             >
               {t.subtitle}
             </motion.p>

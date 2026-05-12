@@ -82,10 +82,9 @@ export default function CourseSection() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-secondary/5 border border-secondary/5"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black border border-secondary/5"
           >
-            <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
-            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-secondary">
+            <span className="text-xs font-black uppercase tracking-wider text-white">
               Curated Learning
             </span>
           </motion.div>
@@ -94,7 +93,7 @@ export default function CourseSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black text-secondary tracking-tighter leading-none"
+            className="text-lg md:text-6xl font-black text-secondary tracking-tighter leading-none"
           >
             {t.titleStart}
             <br />

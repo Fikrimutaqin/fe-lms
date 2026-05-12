@@ -9,12 +9,10 @@ import { useState, useEffect } from "react";
 import LanguageModal from "../shared/LanguageModal";
 import { useLanguage } from "@/providers/LanguageProvider";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 export default function Navbar() {
   const [isLangModalOpen, setIsLangModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileCategoryOpen, setIsMobileCategoryOpen] = useState(false);
   const { language, t } = useLanguage();
   const pathname = usePathname();
 
@@ -38,7 +36,7 @@ export default function Navbar() {
           {/* Logo & Categories */}
           <div className="flex items-center gap-10 shrink-0">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-primary/20">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform">
                 <span className="text-white font-black text-xl md:text-2xl">N</span>
               </div>
               <span className="text-2xl font-black tracking-tighter text-secondary hidden sm:block">NexLearn</span>
@@ -61,7 +59,6 @@ export default function Navbar() {
                   }`}
               >
                 {t.menu.mentor}
-                <span className="bg-primary/10 text-primary text-[8px] px-1.5 py-0.5 rounded-md font-black uppercase">New</span>
                 {isActive('/mentors') && (
                   <motion.div layoutId="activeNav" className="absolute bottom-[-32px] left-0 right-0 h-1 bg-primary rounded-t-full" />
                 )}
@@ -76,7 +73,7 @@ export default function Navbar() {
             </div>
             <Input
               placeholder={t.menu.placeholderSearch}
-              className="w-full pl-11 h-11 bg-gray-50 border-gray-100 rounded-full focus-visible:ring-primary/20 focus-visible:border-primary transition-all text-xs font-medium shadow-inner"
+              className="w-full pl-11 h-11 bg-gray-50 border-primary rounded-full focus-visible:ring-primary/20 focus-visible:border-primary transition-all text-xs font-medium shadow-inner"
             />
           </div>
 
@@ -108,16 +105,15 @@ export default function Navbar() {
               <Link href="/login">
                 <Button
                   variant="ghost"
-                  className={`font-black text-xs uppercase tracking-widest px-6 rounded-full w-full transition-all ${isActive('/login') ? 'text-primary bg-primary/5' : 'text-secondary hover:text-primary'
-                    }`}
+                  className={`font-black text-xs uppercase tracking-widest px-6 rounded-full w-full transition-all hover:text-primary hover:bg-primary/5`}
                 >
                   {t.menu.login}
                 </Button>
               </Link>
               <Link href="/register">
                 <Button
-                  className={`font-black text-xs uppercase tracking-widest px-8 md:px-10 h-11 md:h-12 rounded-full shadow-xl transition-all hover:scale-105 active:scale-95 ${isActive('/register') ? 'bg-primary text-white shadow-primary/20' : 'bg-secondary hover:bg-secondary/90 text-white shadow-secondary/20'
-                    }`}
+                  variant="outline"
+                  className={`bg-primary text-white hover:bg-primary hover:text-white font-black text-xs uppercase tracking-widest px-8 md:px-10 h-11 md:h-12 rounded-full transition-all hover:scale-105 active:scale-95`}
                 >
                   {t.menu.register}
                 </Button>
@@ -180,7 +176,6 @@ export default function Navbar() {
                   </Link>
                   <Link href="/mentors" className="flex items-center justify-between p-3 rounded-xl hover:bg-primary/5 text-secondary font-bold transition-all">
                     {t.menu.mentor}
-                    <span className="bg-primary/10 text-primary text-[8px] px-1.5 py-0.5 rounded-md font-black uppercase">New</span>
                   </Link>
                 </nav>
               </div>

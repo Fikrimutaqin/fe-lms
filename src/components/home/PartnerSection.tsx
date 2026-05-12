@@ -21,7 +21,7 @@ export default function PartnerSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[10px] font-black uppercase tracking-widest text-gray-400"
+            className="text-xs font-black uppercase tracking-widest text-gray-400"
           >
             Empowering professionals at world-class teams
           </motion.p>

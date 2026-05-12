@@ -46,8 +46,7 @@ export default function LearningFlow() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md"
           >
-            <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-primary">{t.badge}</span>
+            <span className="text-xs font-black uppercase text-primary">{t.badge}</span>
           </motion.div>
 
           <h2 className="text-5xl md:text-6xl font-black text-secondary tracking-tighter">
@@ -77,7 +76,7 @@ export default function LearningFlow() {
 
                 {/* Header: Icon & ID */}
                 <div className="flex items-start justify-between mb-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${step.color} flex items-center justify-center text-white shadow-xl shadow-gray-200 transition-transform duration-500 group-hover:rotate-6`}>
+                  <div className={`w-16 h-16 rounded-full bg-linear-to-br ${step.color} flex items-center justify-center text-white shadow-xl shadow-gray-200 transition-transform duration-500 group-hover:rotate-6`}>
                     <step.icon className="w-8 h-8" />
                   </div>
                   <span className="text-4xl font-black text-gray-50 italic group-hover:text-gray-100 transition-colors">
@@ -96,7 +95,7 @@ export default function LearningFlow() {
                 </div>
 
                 {/* Footer: Learn More */}
-                <div className="pt-8 flex items-center gap-3 text-primary font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 cursor-pointer">
+                <div className="pt-8 flex items-center gap-3 text-primary font-black text-[10px] uppercase opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 cursor-pointer">
                   Learn Protocol <ArrowRight className="w-3 h-3" />
                 </div>
               </div>
@@ -115,7 +114,7 @@ export default function LearningFlow() {
           whileInView={{ opacity: 1, y: 0 }}
           className="mt-20 flex justify-center"
         >
-          <button className="h-14 px-10 bg-secondary text-white font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-primary transition-all active:scale-95 shadow-xl shadow-secondary/10">
+          <button className="h-14 px-10 bg-transparent border border-primary text-primary font-black text-xs uppercase tracking-widest rounded-full hover:bg-primary hover:text-white transition-all active:scale-95 shadow-xl shadow-secondary/10">
             {t.cta}
           </button>
         </motion.div>

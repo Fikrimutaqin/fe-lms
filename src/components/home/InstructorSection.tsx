@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Users, Video, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useLanguage } from "@/providers/LanguageProvider";
-// import { INSTRUCTOR_DATA } from "@/data/home";
 import axiosInstance from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
@@ -15,19 +14,6 @@ export default function InstructorSection() {
   const t = translations.instructor;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-
-  interface Instructor {
-    id: string;
-    firstName: string;
-    lastName: string;
-    avatarUrl: string;
-    title: string;
-    bio: string;
-    rating: number;
-    reviewsCount: number;
-    studentsCount: number;
-    coursesCount: number;
-  }
 
   const { data: queryData, isLoading } = useQuery({
     queryKey: ['instructors'],
@@ -164,7 +150,7 @@ export default function InstructorSection() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="absolute -top-8 -left-4 md:-top-10 md:-left-12 p-6 md:p-8 bg-secondary rounded-[2.5rem] shadow-2xl text-white space-y-4 border border-white/10 pointer-events-none hidden sm:block"
+                  className="absolute -top-8 -left-4 md:top-10 md:-left-12 p-6 md:p-8 bg-secondary rounded-[2.5rem] shadow-2xl text-white space-y-4 border border-white/10 pointer-events-none hidden sm:block"
                 >
                   <div className="flex -space-x-3">
                     {[1, 2, 3].map(i => (
@@ -183,7 +169,7 @@ export default function InstructorSection() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="absolute bottom-24 -right-4 md:bottom-20 md:-right-12 p-6 md:p-8 bg-white rounded-[2.5rem] shadow-2xl space-y-2 border border-gray-100 pointer-events-none hidden sm:block"
+                  className="absolute bottom-24 -right-4 md:bottom-32 md:-right-12 p-6 md:p-8 bg-white rounded-[2.5rem] shadow-2xl space-y-2 border border-gray-100 pointer-events-none hidden sm:block"
                 >
                   <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-4">
                     <Star className="w-5 h-5 fill-current" />
@@ -216,7 +202,7 @@ export default function InstructorSection() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="px-4 py-2 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20 w-fit"
+                className="px-4 py-2 rounded-full text-primary text-[10px] font-black uppercase tracking-widest border border-primary w-fit"
               >
                 {t.badge}
               </motion.div>
@@ -273,7 +259,7 @@ export default function InstructorSection() {
               whileInView={{ opacity: 1, y: 0 }}
               className="pt-6 md:pt-10 flex flex-col sm:flex-row items-start sm:items-center gap-8"
             >
-              <Button size="lg" className="h-14 md:h-16 px-10 bg-secondary hover:bg-secondary/90 text-white font-black rounded-2xl shadow-2xl shadow-secondary/20 gap-3 text-base md:text-lg transition-all group overflow-hidden relative">
+              <Button size="lg" className="h-14 md:h-16 px-10 bg-transparent rounded-full border border-primary text-primary hover:bg-primary hover:text-white font-black gap-3 text-base md:text-lg transition-all group overflow-hidden relative">
                 <span className="relative z-10">{t.ctaButton}</span>
                 <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               </Button>

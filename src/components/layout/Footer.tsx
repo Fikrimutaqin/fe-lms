@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="grid grid-cols-2 gap-8 col-span-1 lg:col-span-1">
             <div className="space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Academy</h4>
+              <h4 className="text-[10px] font-black uppercase text-white">Academy</h4>
               <ul className="space-y-4 text-sm text-gray-400 font-bold">
                 <li><Link href="/courses" className="hover:text-white transition-colors">All Courses</Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors">Learning Path</Link></li>
@@ -53,7 +53,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="space-y-6">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Company</h4>
+              <h4 className="text-[10px] font-black uppercase text-white">Company</h4>
               <ul className="space-y-4 text-sm text-gray-400 font-bold">
                 <li><Link href="#" className="hover:text-white transition-colors">About Us</Link></li>
                 <li><Link href="#" className="hover:text-white transition-colors">Success Stories</Link></li>
@@ -65,18 +65,18 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-6 col-span-1">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Get in Touch</h4>
+            <h4 className="text-[10px] font-black uppercase text-white">Get in Touch</h4>
             <ul className="space-y-5">
               <li className="flex items-start gap-4 group cursor-default">
-                <MapPin className="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors shrink-0" />
+                <MapPin className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors shrink-0" />
                 <span className="text-sm text-gray-400 font-medium leading-tight">Equity Tower, 35th Floor<br />SCBD, Jakarta, Indonesia</span>
               </li>
               <li className="flex items-center gap-4 group cursor-default">
-                <Mail className="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors shrink-0" />
+                <Mail className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors shrink-0" />
                 <span className="text-sm text-gray-400 font-medium">hello@nexlearn.id</span>
               </li>
               <li className="flex items-center gap-4 group cursor-default">
-                <Globe className="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors shrink-0" />
+                <Globe className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors shrink-0" />
                 <span className="text-sm text-gray-400 font-medium">www.nexlearn.id</span>
               </li>
             </ul>
@@ -85,9 +85,8 @@ export default function Footer() {
           {/* Newsletter (Human touch: Engagement section) */}
           <div className="space-y-6 col-span-1 bg-white/5 p-8 rounded-[2.5rem] border border-white/5 relative group overflow-hidden">
             <div className="space-y-3 relative z-10">
-              <div className="flex items-center gap-2 text-primary">
-                <Sparkles className="w-4 h-4" />
-                <h4 className="text-[10px] font-black uppercase tracking-[0.3em]">Join the Inner Circle</h4>
+              <div className="flex items-center gap-2 text-white">
+                <h4 className="text-[10px] font-black uppercase">Join the Inner Circle</h4>
               </div>
               <p className="text-xs text-gray-400 leading-relaxed font-medium">
                 Get monthly curriculum updates and career insights delivered to your inbox.
@@ -96,7 +95,7 @@ export default function Footer() {
             <div className="space-y-3 relative z-10">
               <Input
                 placeholder="you@company.com"
-                className="bg-white/5 border-white/10 rounded-xl h-12 text-sm focus:ring-primary/20"
+                className="bg-white/5 border-white/10 rounded-xl h-12 text-sm focus:ring-white"
               />
               <Button className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-black text-[10px] uppercase tracking-widest rounded-xl transition-all active:scale-95">
                 Subscribe
@@ -108,7 +107,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
+          <p className="text-[10px] font-bold text-gray-500 uppercase">
             © 2026 NexLearn Academy. Built with passion in Jakarta.
           </p>
           <div className="flex items-center gap-8 text-[10px] font-black text-gray-500 uppercase tracking-widest">

@@ -14,22 +14,13 @@ export default function CoursesPage() {
 
   return (
     <main className="min-h-screen bg-white">
-
-      {/* Enhanced Mesh Gradients Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[140px] opacity-80" />
-        <div className="absolute bottom-[-15%] right-[-10%] w-[800px] h-[800px] bg-primary/25 rounded-full blur-[160px] opacity-70" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
-        <div className="absolute top-[20%] right-[10%] w-[300px] h-[300px] bg-indigo-200/40 rounded-full blur-[100px]" />
-      </div>
-
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
         {/* Header Section */}
         <div className="max-w-4xl mb-20">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-bold text-primary uppercase tracking-[0.3em] mb-4"
+            className="text-[11px] font-bold border border-primary rounded-full w-fit px-4 py-2 text-primary uppercase mb-4"
           >
             {pageT.badge}
           </motion.div>
@@ -45,7 +36,7 @@ export default function CoursesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-gray-500 max-w-2xl font-medium leading-relaxed"
+            className="text-base text-gray-500 max-w-2xl font-medium leading-relaxed"
           >
             {pageT.subtitle}
           </motion.p>

@@ -25,7 +25,6 @@ export default function AboutSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-white border border-secondary"
               >
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-widest">{t.badge}</span>
               </motion.div>
 
@@ -46,7 +45,7 @@ export default function AboutSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-gray-400 text-lg md:text-xl font-medium max-w-xl leading-relaxed"
+                className="text-gray-400 text-base font-medium max-w-xl leading-relaxed"
               >
                 {t.subtitle}
               </motion.p>
@@ -103,9 +102,9 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 }}
-              className="bg-secondary p-10 rounded-[3rem] shadow-2xl shadow-secondary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-12 mb-2"
+              className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-secondary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-12 mb-2"
             >
-              <p className="text-5xl font-black text-white tracking-tighter">{t.stat2Number}</p>
+              <p className="text-5xl font-black text-black tracking-tighter">{t.stat2Number}</p>
               <p className="text-[10px] font-black text-primary uppercase tracking-widest">{t.stat2Label}</p>
             </motion.div>
 
@@ -123,12 +122,12 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-primary p-10 rounded-[3rem] shadow-2xl shadow-primary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-6"
+              className="bg-white p-10 rounded-[3rem] shadow-2xl shadow-primary/20 flex flex-col justify-center items-center text-center space-y-3 relative z-10 translate-y-6"
             >
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-md">
+              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-black backdrop-blur-md">
                 <Globe className="w-6 h-6" />
               </div>
-              <p className="text-[10px] font-black text-white uppercase tracking-widest">Global Access</p>
+              <p className="text-[10px] font-black text-primary uppercase tracking-widest">Global Access</p>
             </motion.div>
           </div>
 

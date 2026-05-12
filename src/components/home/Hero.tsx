@@ -117,10 +117,10 @@ export default function Hero() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center gap-3"
               >
-                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] bg-white/10 text-white backdrop-blur-md border border-white/20`}>
+                <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-black bg-white`}>
                   {SLIDES[currentIndex].badge}
                 </span>
-                <span className="text-primary font-bold text-sm tracking-wide">
+                <span className="text-white font-bold text-sm tracking-wide">
                   {SLIDES[currentIndex].subtitle}
                 </span>
               </motion.div>
@@ -149,11 +149,11 @@ export default function Hero() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap items-center gap-4 pt-4"
               >
-                <Button size="lg" className="h-14 px-10 bg-primary hover:bg-primary/90 text-white font-black text-xs uppercase tracking-widest rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95 group/btn">
+                <Button size="lg" className="h-14 px-10 bg-primary hover:bg-primary/90 text-white font-black text-xs uppercase tracking-widest rounded-full shadow-xl transition-all active:scale-95 group/btn">
                   {SLIDES[currentIndex].cta}
                   <ChevronRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" size="lg" className="h-14 px-8 border-white/20 text-black hover:bg-white/10 font-bold text-xs uppercase tracking-widest rounded-2xl backdrop-blur-sm">
+                <Button variant="outline" size="lg" className="h-14 px-8 border-white/20 text-black hover:bg-white font-bold text-xs uppercase tracking-widest rounded-full backdrop-blur-sm">
                   <Play className="mr-2 w-4 h-4 fill-current" />
                   View Trailer
                 </Button>
@@ -184,13 +184,13 @@ export default function Hero() {
       <div className="absolute inset-y-0 left-4 right-4 z-20 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
         <button
           onClick={slidePrev}
-          className="w-14 h-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-all pointer-events-auto active:scale-90"
+          className="w-14 h-14 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-all pointer-events-auto active:scale-90"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={slideNext}
-          className="w-14 h-14 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-all pointer-events-auto active:scale-90"
+          className="w-14 h-14 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-primary transition-all pointer-events-auto active:scale-90"
         >
           <ChevronRight className="w-6 h-6" />
         </button>

@@ -11,8 +11,8 @@ interface CategoryCardProps {
 export default function CategoryCard({ title, image, priority = false, sold }: CategoryCardProps) {
   return (
     <Link href="/categories" className="flex flex-col gap-6 group cursor-pointer items-center">
-      <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-white group-hover:shadow-primary/20 transition-all duration-500 group-hover:-translate-y-3">
-        <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors z-10" />
+      <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-white transition-all duration-500 group-hover:-translate-y-3">
+        <div className="absolute inset-0 bg-primary/0 transition-colors z-10" />
         <Image
           src={image}
           alt={title}

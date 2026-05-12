@@ -43,21 +43,13 @@ export default function MentorsPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      
-      {/* Enhanced Mesh Gradients Background (Same as Courses) */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[140px] opacity-80" />
-        <div className="absolute bottom-[-15%] right-[-10%] w-[800px] h-[800px] bg-primary/25 rounded-full blur-[160px] opacity-70" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-primary/10 rounded-full blur-[120px]" />
-      </div>
-
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
         {/* Header Section */}
         <div className="max-w-4xl mb-20">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-[11px] font-bold text-primary uppercase tracking-[0.3em] mb-4"
+            className="text-[11px] font-bold border border-primary rounded-full w-fit px-4 py-2 text-primary uppercase mb-4"
           >
             {m.badge}
           </motion.div>
@@ -94,15 +86,15 @@ export default function MentorsPage() {
             </div>
 
             {/* Load More Button */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mt-24 flex justify-center"
             >
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="h-14 px-10 rounded-full border-gray-200 text-secondary font-bold hover:bg-gray-50 hover:border-gray-300 transition-all gap-3"
               >
                 {m.filters.seeMore}
