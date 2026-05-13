@@ -140,7 +140,6 @@ export default function Hero() {
           <div className="container mx-auto px-4 h-full relative z-10 flex items-center">
             <div className="max-w-4xl">
               <div className="flex flex-col gap-6 md:gap-10">
-
                 {/* Badge & Subtitle */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -185,7 +184,7 @@ export default function Hero() {
                   transition={{ delay: 0.9, duration: 0.6 }}
                   className="flex flex-wrap items-center gap-6 pt-6"
                 >
-                  <Button size="lg" className="h-16 px-12 bg-white hover:bg-gray-100 text-[#020617] font-black text-xs uppercase tracking-widest rounded-2xl shadow-2xl transition-all active:scale-95 group/btn">
+                  <Button size="lg" className="h-16 px-12 bg-white hover:bg-gray-100 text-[#020617] font-black text-xs uppercase tracking-widest rounded-full shadow-2xl transition-all active:scale-95 group/btn">
                     {SLIDES[currentIndex].cta}
                     <ArrowRight className="ml-3 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
