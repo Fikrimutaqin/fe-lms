@@ -6,6 +6,7 @@ import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface CourseCardProps {
+  id: string;
   image: string;
   category: string;
   tag: string;
@@ -18,6 +19,7 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({
+  id,
   image,
   category,
   tag,
@@ -34,7 +36,7 @@ export default function CourseCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
-      <Link href="/courses/1" className="group cursor-pointer block">
+      <Link href={`/courses/${id}`} className="group cursor-pointer block">
         <div className="relative aspect-4/5 rounded-[32px] overflow-hidden mb-6 bg-gray-100">
           <Image
             src={image}

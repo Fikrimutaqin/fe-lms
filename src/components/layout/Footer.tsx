@@ -13,7 +13,7 @@ export default function Footer() {
   if (isDashboard) return null;
 
   return (
-    <footer className="bg-secondary text-white pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-secondary text-white pt-20 pb-12 border-t border-white/5 relative overflow-hidden">
 
       {/* Decorative Brand Accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />

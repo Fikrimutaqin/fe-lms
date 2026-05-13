@@ -91,7 +91,7 @@ export default function InstructorSection() {
   const formattedStudents = new Intl.NumberFormat().format(currentInstructor.studentsCount);
 
   return (
-    <section className="w-full py-32 md:py-48 bg-white overflow-hidden relative font-sans">
+    <section className="w-full py-20 bg-white overflow-hidden relative font-sans">
       {/* Dynamic Background Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-primary/5 to-transparent pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
@@ -211,7 +211,7 @@ export default function InstructorSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-secondary leading-none md:leading-[0.95] tracking-tighter"
+                className="text-4xl md:text-5xl lg:text-6xl font-black text-secondary leading-none md:leading-16 tracking-tighter"
               >
                 {t.titleLine1}<br />
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-indigo-600 italic pb-2 inline-block">

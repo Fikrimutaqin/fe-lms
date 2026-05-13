@@ -80,7 +80,8 @@
         "disciplines": "Disiplin Ilmu",
         "experience": "Tingkat Pengalaman",
         "format": "Format Kursus",
-        "seeMore": "Lihat Lebih Banyak Koleksi"
+        "seeMore": "Lihat Lebih Banyak Koleksi",
+        "categoryCourse": "Kategori Kursus"
       }
     },
     "courseDetail": {
@@ -307,7 +308,8 @@
         "disciplines": "Disciplines",
         "experience": "Experience Level",
         "format": "Course Format",
-        "seeMore": "View More Collections"
+        "seeMore": "View More Collections",
+        "categoryCourse": "Course Categories"
       }
     },
     "courseDetail": {

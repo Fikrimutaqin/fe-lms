@@ -9,7 +9,7 @@ export default function AboutSection() {
   const t = translations.about;
 
   return (
-    <section className="w-full py-32 bg-white relative overflow-hidden font-sans">
+    <section className="w-full py-20 bg-white relative overflow-hidden font-sans">
       {/* Decorative Blur Backgrounds */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />

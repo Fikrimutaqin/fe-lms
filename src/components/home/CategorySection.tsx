@@ -22,7 +22,7 @@ export default function CategorySection() {
 
   // Tanstack Query
   const { data: queryData, isLoading } = useQuery({
-    queryKey: ['categories'],
+    queryKey: ['categories', 'top'],
     queryFn: async () => {
       const response = await axiosInstance.get('/categories/top');
       return response.data.data;
@@ -32,7 +32,7 @@ export default function CategorySection() {
   const categories = Array.isArray(queryData) ? queryData : [];
 
   return (
-    <section className="w-full py-24 bg-gray-50/50">
+    <section className="w-full py-20 bg-gray-50/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

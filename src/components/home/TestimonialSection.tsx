@@ -58,7 +58,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="w-full py-24 md:py-40 bg-[#FDFDFD] overflow-hidden relative font-sans">
+    <section className="w-full py-20 bg-[#FDFDFD] overflow-hidden relative font-sans">
       {/* Premium Background Accents */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-primary/5 to-transparent pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />

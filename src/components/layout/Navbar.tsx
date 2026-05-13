@@ -44,6 +44,16 @@ export default function Navbar() {
 
             <nav className="hidden lg:flex items-center gap-8">
               <Link
+                href="/categories"
+                className={`text-sm font-bold transition-all relative flex items-center gap-2 ${isActive('/mentors') ? 'text-primary' : 'text-secondary hover:text-primary'
+                  }`}
+              >
+                {t.menu.categories}
+                {isActive('/categories') && (
+                  <motion.div layoutId="activeNav" className="absolute bottom-[-32px] left-0 right-0 h-1 bg-primary rounded-t-full" />
+                )}
+              </Link>
+              <Link
                 href="/courses"
                 className={`text-sm font-bold transition-all relative ${isActive('/courses') ? 'text-primary' : 'text-secondary hover:text-primary'
                   }`}

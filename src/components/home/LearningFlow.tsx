@@ -36,7 +36,7 @@ export default function LearningFlow() {
   const t = translations.learningFlow;
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden font-sans">
+    <section className="py-20 bg-white relative overflow-hidden font-sans">
       <div className="container mx-auto px-4 relative z-10">
 
         {/* Header Section */}
